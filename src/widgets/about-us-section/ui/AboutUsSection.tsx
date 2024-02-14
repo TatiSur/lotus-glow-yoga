@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import { Title } from '@/shared/ui/title';
 import { SECTION_IDS } from '@/shared/config';
+import aboutUsImg from '@/shared/assets/images/about-us.webp';
 
 const AboutUsSection: FC = () => {
   return (
@@ -24,10 +25,8 @@ const AboutUsSection: FC = () => {
         </div>
         <div className="max-h-[188px] max-w-[336px] shrink-0 lg:h-[238px] lg:w-[427px]">
           <Image
-            src="/images/about-us.webp"
+            src={aboutUsImg}
             alt="Woman in yoga pose"
-            width={427}
-            height={238}
             className="object-cover"
           />
         </div>
