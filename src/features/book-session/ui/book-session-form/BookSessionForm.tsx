@@ -1,49 +1,47 @@
 'use client';
 
 import { FC, HTMLAttributes, useEffect, useState } from 'react';
-import { SingleValue } from 'react-select';
+import type { SingleValue } from 'react-select';
 
 import { InputField } from '@/shared/ui/input-field';
 import { Button } from '@/shared/ui/button';
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
-import { CustomSelect } from '@/shared/ui/custom-select';
 import { DatePicker } from '@/shared/ui/date-picker';
-import { SelectOption } from '@/shared/ui/custom-select/CustomSelect';
+import { SessionTypeSelect } from '@/entities/session-types';
+import type { SessionType } from '@/entities/session-types/model/types';
+import type { SelectOption } from '@/shared/ui/custom-select/CustomSelect';
 
 import { BookSessionDatePicker } from '../book-session-date-picker';
 
 interface BookSessionFormProps extends HTMLAttributes<HTMLFormElement> {
-  sessionType?: string;
+  sessionTypes?: SessionType[];
 }
 
-const sessionTypes: SelectOption[] = [
-  { value: 'yin', label: 'Yin Yoga' },
-  { value: 'kundalini', label: 'Kundalini Yoga' },
-  { value: 'bikram', label: 'Bikram Yoga' },
-  { value: 'iyengar', label: 'Iyengar Yoga' },
-];
-
 const BookSessionForm: FC<BookSessionFormProps> = ({
-  sessionType = '',
+  sessionTypes,
   ...props
 }) => {
   const [selectedSessionType, setSelectedSessionType] =
-    useState<SelectOption | null>(null);
-
-  const handleSessionTypeChange = (
-    newValue: SingleValue<SelectOption>
-  ): void => {
-    setSelectedSessionType(newValue);
-  };
+    useState<SessionType | null>(null);
 
   useEffect(() => {
-    if (sessionType) {
-      const selectedSessionType = sessionTypes.find(
-        (type) => type.value === sessionType
+    const sessionTypeIds = sessionStorage.getItem('sessionTypeIds');
+    if (sessionTypeIds) {
+      sessionStorage.removeItem('sessionTypeIds');
+
+      const sessionTypeIdsArr = JSON.parse(sessionTypeIds);
+
+      const selectedSessionType = sessionTypes?.find(({ id }) =>
+        sessionTypeIdsArr.includes(id)
       );
+
       if (selectedSessionType) setSelectedSessionType(selectedSessionType);
     }
-  }, [sessionType]);
+  }, []);
+
+  const handleSelectSessionType = (newValue: SingleValue<SelectOption>) => {
+    setSelectedSessionType(newValue as SessionType);
+  };
 
   return (
     <form
@@ -70,12 +68,11 @@ const BookSessionForm: FC<BookSessionFormProps> = ({
         label="Phone Number"
         placeholder="Eg. 180 1200 1000"
       />
-      <CustomSelect
-        name="sessionType"
-        label="Preferred Session Type"
-        value={selectedSessionType}
-        onChange={handleSessionTypeChange}
-        options={sessionTypes}
+
+      <SessionTypeSelect
+        sessionTypes={sessionTypes}
+        sessionType={selectedSessionType}
+        onSelect={handleSelectSessionType}
       />
 
       <BookSessionDatePicker
