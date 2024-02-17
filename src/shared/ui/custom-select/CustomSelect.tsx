@@ -51,14 +51,13 @@ const customClassNames = (
 });
 
 const CustomSelect: FC<CustomSelectProps> = ({
-  id,
   name,
   label,
   errorMessage = '',
   isSearchable = false,
   ...props
 }) => {
-  const selectId = id || `select-${name}`;
+  const selectId = `select-${name}`;
 
   const [error, setError] = useState<string>(errorMessage);
 
@@ -67,7 +66,7 @@ const CustomSelect: FC<CustomSelectProps> = ({
       {label && <FieldLabel>{label}</FieldLabel>}
       <Select
         unstyled
-        id={selectId}
+        instanceId={selectId}
         name={name}
         isSearchable={isSearchable}
         classNames={customClassNames(!!error)}
