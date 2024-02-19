@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { Title } from '@/shared/ui/title';
 import { SECTION_IDS } from '@/shared/config';
-import InstructorCardList from '@/widgets/instructors-section/ui/instructor-card-list/InstructorCardList';
-import { getInstructors } from '@/entities/instructor';
+import InstructorCardList from './instructor-card-list/InstructorCardList';
+import { getInstructorsWithSessionTypes } from '@/entities/instructor';
 
 const InstructorsSection: FC = async () => {
-  const { data: instructors, error } = await getInstructors();
+  const { data: instructors, error } = await getInstructorsWithSessionTypes();
 
   return (
     <section

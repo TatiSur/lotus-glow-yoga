@@ -5,16 +5,13 @@ import YoutubeIcon from '@/shared/assets/icons/social/youtube.svg';
 import PinterestIcon from '@/shared/assets/icons/social/pinterest.svg';
 import { Title } from '@/shared/ui/title';
 import clsx from 'clsx';
+import type { Instructor } from '@/entities/instructor';
+import type { SessionType } from '@/entities/session-types';
 
-interface InstructorCardProps extends HTMLAttributes<HTMLDivElement> {
-  name: string;
-  photo: string;
-  description: string;
-  socialLinks: {
-    instagram?: string;
-    youtube?: string;
-    pinterest?: string;
-  };
+interface InstructorCardProps
+  extends Omit<Instructor, 'id' | 'sessionTypeIds'>,
+    HTMLAttributes<HTMLDivElement> {
+  sessionTypes: SessionType[];
 }
 
 const InstructorCard: FC<InstructorCardProps> = ({
@@ -22,6 +19,7 @@ const InstructorCard: FC<InstructorCardProps> = ({
   photo,
   description,
   socialLinks,
+  sessionTypes,
   className,
   ...props
 }) => {
@@ -33,20 +31,36 @@ const InstructorCard: FC<InstructorCardProps> = ({
       )}
       {...props}
     >
-      <Image
-        src={photo}
-        alt={name}
-        width={195}
-        height={143}
-        className="smax-w-[195px] mb-9 h-auto object-cover"
-      />
-      <Title
-        type="h3"
-        size="h5"
-        className="mb-7 !text-start uppercase text-primary"
-      >
-        {name}
-      </Title>
+      <div className="flex flex-wrap gap-x-5">
+        <div className="mb-7">
+          <Image
+            src={photo}
+            alt={name}
+            width={195}
+            height={143}
+            className="h-auto w-full max-w-[195px] object-cover"
+          />
+        </div>
+        <div className="min-w-[188px]">
+          <Title
+            type="h3"
+            size="h5"
+            className="mb-5 !text-start uppercase text-primary"
+          >
+            {name}
+          </Title>
+          <ul className="mb-4 flex flex-col gap-1">
+            {sessionTypes.map(({ id, label }) => (
+              <li
+                key={id}
+                className="ml-3 list-disc text-xs font-medium uppercase text-hover"
+              >
+                {label}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
       <p className="mb-auto pb-9 text-sm text-light-text md:pb-[46px]">
         {description}
       </p>

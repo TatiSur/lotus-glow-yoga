@@ -3,6 +3,7 @@ import clsx from 'clsx';
 
 import { Instructor, InstructorCard } from '@/entities/instructor';
 import PlaceholderCard from '../placeholder-card/PlaceholderCard';
+import type { SessionType } from '@/entities/session-types';
 
 const getPlaceholders = (length: number, columns: number) => {
   if (!length) {
@@ -13,8 +14,13 @@ const getPlaceholders = (length: number, columns: number) => {
   return remainder ? new Array(columns - remainder).fill(null) : [];
 };
 
+interface InstructorWithSessionTypes
+  extends Omit<Instructor, 'sessionTypeIds'> {
+  sessionTypes: SessionType[];
+}
+
 interface InstructorCardListProps extends HTMLAttributes<HTMLDivElement> {
-  instructors: [] | Instructor[];
+  instructors: [] | InstructorWithSessionTypes[];
   error: string | null;
 }
 
@@ -40,9 +46,9 @@ const InstructorCardList: FC<InstructorCardListProps> = ({
       )}
       {...props}
     >
-      {instructors.map((instructor, index) => (
+      {instructors.map(({ id, ...instructor }, index) => (
         <InstructorCard
-          key={instructor.name}
+          key={id}
           {...instructor}
           style={{ order: index || '-9999' }}
         />
