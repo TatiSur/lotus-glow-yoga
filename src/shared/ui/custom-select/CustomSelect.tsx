@@ -1,6 +1,4 @@
-'use client';
-
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import Select, {
   ClassNamesConfig,
   GroupBase,
@@ -59,8 +57,6 @@ const CustomSelect: FC<CustomSelectProps> = ({
 }) => {
   const selectId = `select-${name}`;
 
-  const [error, setError] = useState<string>(errorMessage);
-
   return (
     <div className="relative w-full">
       {label && <FieldLabel>{label}</FieldLabel>}
@@ -69,11 +65,10 @@ const CustomSelect: FC<CustomSelectProps> = ({
         instanceId={selectId}
         name={name}
         isSearchable={isSearchable}
-        classNames={customClassNames(!!error)}
-        onInputChange={() => setError('')}
+        classNames={customClassNames(!!errorMessage)}
         {...props}
       />
-      {error && <FieldError>{error}</FieldError>}
+      {errorMessage && <FieldError>{errorMessage}</FieldError>}
     </div>
   );
 };
