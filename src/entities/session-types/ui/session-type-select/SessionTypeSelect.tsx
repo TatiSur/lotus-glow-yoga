@@ -11,12 +11,16 @@ interface SessionTypeSelectProps {
   sessionTypes?: SessionType[];
   sessionType?: SessionType | null;
   onSelect?: (value: SingleValue<SelectOption>) => void;
+  errorMessage?: string;
+  onInputChange?: () => void;
 }
 
 const SessionTypeSelect: FC<SessionTypeSelectProps> = ({
   sessionTypes,
   sessionType,
   onSelect,
+  errorMessage,
+  onInputChange,
 }) => {
   const handleSessionTypeChange = (
     newValue: SingleValue<SelectOption>
@@ -26,12 +30,13 @@ const SessionTypeSelect: FC<SessionTypeSelectProps> = ({
 
   return (
     <CustomSelect
-      name="sessionType"
+      name="sessionTypeId"
       label="Preferred Session Type"
       value={sessionType}
       onChange={handleSessionTypeChange}
       options={sessionTypes}
-      errorMessage={''}
+      errorMessage={errorMessage}
+      onInputChange={onInputChange}
     />
   );
 };
