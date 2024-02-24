@@ -5,4 +5,5 @@ export const apiRoutes = {
   yogaTypes: `${baseUrl}/api/yoga-types`,
   sessionTypes: `${baseUrl}/api/session-types`,
   subscription: `${baseUrl}/api/subscription`,
+  bookSession: `${baseUrl}/api/book-session`,
 };
