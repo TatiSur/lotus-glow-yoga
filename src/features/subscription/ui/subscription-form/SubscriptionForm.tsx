@@ -52,8 +52,6 @@ const SubscriptionForm: FC = () => {
         defaultValue={state.values.email}
         onInput={() => setLocalError('')}
       />
-      {/*<SubmitButton className="xs:max-w-[230px]">Subscribe</SubmitButton>*/}
-
       <Button
         type="submit"
         variant="primary"
