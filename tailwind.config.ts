@@ -2,18 +2,27 @@ import type { Config } from 'tailwindcss'
 
 export default {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        main: 'var(--color-main)',
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
         hover: 'var(--color-hover)',
         background: 'var(--color-background)',
-        text: 'var(--color-text)',
+        'light-text': 'var(--color-light-text)',
+        'dark-text': 'var(--color-dark-text)',
         'ui-blocks': 'var(--color-ui-blocks)',
+      },
+      screens: {
+        '2xs': '400px',
+        xs: '480px',
+        '2xl': '1440px',
+      },
+      height: {
+        'header': 'var(--height-header)',
+        'xs-header': 'var(--height-xs-header)',
       },
     },
   },

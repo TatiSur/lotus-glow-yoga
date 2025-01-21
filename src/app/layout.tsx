@@ -15,7 +15,7 @@ const lato = Lato({
 const mavenPro = Maven_Pro({
   variable: '--font-maven-pro',
   subsets: [ 'latin' ],
-  weight: [ '400', '700' ],
+  weight: [ '400', '500', '700' ],
   style: [ 'normal' ],
   display: 'swap',
 })
@@ -30,7 +30,7 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className={`${lato.variable} ${mavenPro.variable}`}>
-    <body>{children}</body>
+    <body className="bg-background">{children}</body>
     </html>
   )
 }

@@ -1,7 +1,13 @@
+import { Header } from '@/widgets/header'
+import { HeroSection } from '@/widgets/hero-section'
+
 export default function Home() {
   return (
-    <div>
-      Home page
-    </div>
+    <>
+      <Header/>
+      <main>
+        <HeroSection/>
+      </main>
+    </>
   )
 }
