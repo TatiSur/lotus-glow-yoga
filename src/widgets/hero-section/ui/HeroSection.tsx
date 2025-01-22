@@ -1,55 +1,53 @@
-import { FC } from 'react'
-import Image from 'next/image'
+import { FC } from 'react';
+import Image from 'next/image';
 
-import { Button } from '@/shared/ui/button'
-import ArrowIcon from '@/shared/assets/icons/arrow.svg'
-import PhoneIcon from '@/shared/assets/icons/phone.svg'
+import { Button } from '@/shared/ui/button';
+import { Title } from '@/shared/ui/title';
+import ArrowIcon from '@/shared/assets/icons/arrow.svg';
+import PhoneIcon from '@/shared/assets/icons/phone.svg';
 
 const HeroSection: FC = () => {
   return (
-    <section className="hero flex gap-5 main-container">
-      <div className="flex-1 h-100 flex flex-col justify-center items-center md:items-start py-10">
-        <p
-          className="text-xs md:text-sm lg:text-base md:text-start text-center font-bold tracking-[0.6em] text-primary xs:mb-9 mb-11">
+    <section className="hero main-container flex gap-5">
+      <div className="h-100 flex flex-1 flex-col items-center justify-center py-10 md:items-start">
+        <p className="mb-11 text-center text-xs font-bold tracking-[0.6em] text-primary xs:mb-9 md:text-start md:text-sm lg:text-base">
           LOTUS GLOW YOGA CLUB
         </p>
-        <h1
-          className="lg:text-7xl md:text-5xl text-4xl md:text-start text-center  font-bold text-light-text md:mb-[52px] mb-[73px]">
-          FIND YOUR <br/> INNER <span className="text-primary">LIGHT</span>
-        </h1>
-
-        <div
-          className="md:max-w-full max-w-[295px] mb-20 md:mb-[72px] md:text-start text-center text-light-text text-base md:text-xl font-normal">Illuminate
-          your path with
-          Lotus Glow – find
-          balance and
-          serenity
-          through our organic yoga experience.
+        <Title className="mb-[73px] md:mb-[52px]">
+          FIND YOUR <br /> INNER <span className="text-primary">LIGHT</span>
+        </Title>
+        <div className="mb-20 max-w-[295px] text-center text-base font-normal text-light-text md:mb-[72px] md:max-w-full md:text-start md:text-xl">
+          Illuminate your path with Lotus Glow – find balance and serenity through our organic yoga experience.
         </div>
         <div className="flex gap-2.5">
-          <Button className="max-w-72 xs:px-8 px-[20px] tracking-normal 2xs:tracking-[0.23em]">
+          <Button className="max-w-72 px-[20px] tracking-normal 2xs:tracking-[0.23em] xs:px-8">
             Book a Session
-            <ArrowIcon/>
+            <ArrowIcon />
           </Button>
-          <a href="tel:3125557890" className="md:hidden shrink-0 flex h-100 w-[87px]">
-            <PhoneIcon className="w-100 h-100"/>
+          <a href="tel:3125557890" className="h-100 flex w-[87px] shrink-0 md:hidden">
+            <PhoneIcon className="w-100 h-100" />
           </a>
         </div>
       </div>
-      <div className="relative flex-1 items-end md:flex hidden -mr-10 lg:mr-0">
-        <Image src="/images/hero-bg.webp" alt="Women in yoga pose" width={650} height={1043}
-               className="absolute h-[calc(100%+var(--height-header))] -top-[var(--height-header)] object-cover"/>
-        <a href="tel:3125557890"
-           className="w-full text-center relative block bg-primary rounded-t-full text-dark-text text-lg tracking-[0.23em] py-7 pr-12 pl-[116px] font-medium">
-         <span className="font-lato font-bold xl:inline hidden">
-           GIVE US A CALL:
-         </span>
+      <div className="relative -mr-10 hidden flex-1 items-end md:flex lg:mr-0">
+        <Image
+          src="/images/hero-bg.webp"
+          alt="Woman in yoga pose"
+          width={650}
+          height={1043}
+          className="absolute top-[-var(--height-header)] h-[calc(100%+var(--height-header))] object-cover"
+        />
+        <a
+          href="tel:3125557890"
+          className="relative block w-full rounded-t-full bg-primary py-7 pl-[116px] pr-12 text-center text-lg font-medium tracking-[0.23em] text-dark-text"
+        >
+          <span className="font-lato hidden font-bold xl:inline">GIVE US A CALL:</span>
           (312) 555-7890
-          <PhoneIcon className="absolute left-0 bottom-0 h-full"/>
+          <PhoneIcon className="absolute bottom-0 left-0 h-full" />
         </a>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;
