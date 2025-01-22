@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className={`${lato.variable} ${mavenPro.variable}`}>
-      <body className="bg-background">{children}</body>
+      <body className="relative bg-background">{children}</body>
     </html>
   );
 }

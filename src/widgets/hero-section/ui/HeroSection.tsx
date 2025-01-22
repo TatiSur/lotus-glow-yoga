@@ -1,14 +1,12 @@
 import { FC } from 'react';
 import Image from 'next/image';
-
-import { Button } from '@/shared/ui/button';
 import { Title } from '@/shared/ui/title';
-import ArrowIcon from '@/shared/assets/icons/arrow.svg';
 import PhoneIcon from '@/shared/assets/icons/phone.svg';
+import { BookSessionButton } from '@/features/book-session';
 
 const HeroSection: FC = () => {
   return (
-    <section className="hero main-container flex gap-5">
+    <section className="hero main-container flex gap-5" id="home">
       <div className="h-100 flex flex-1 flex-col items-center justify-center py-10 md:items-start">
         <p className="mb-11 text-center text-xs font-bold tracking-[0.6em] text-primary xs:mb-9 md:text-start md:text-sm lg:text-base">
           LOTUS GLOW YOGA CLUB
@@ -20,10 +18,7 @@ const HeroSection: FC = () => {
           Illuminate your path with Lotus Glow – find balance and serenity through our organic yoga experience.
         </div>
         <div className="flex gap-2.5">
-          <Button className="max-w-72 px-[20px] tracking-normal 2xs:tracking-[0.23em] xs:px-8">
-            Book a Session
-            <ArrowIcon />
-          </Button>
+          <BookSessionButton />
           <a href="tel:3125557890" className="h-100 flex w-[87px] shrink-0 md:hidden">
             <PhoneIcon className="w-100 h-100" />
           </a>

@@ -5,7 +5,7 @@ import { Title } from '@/shared/ui/title';
 
 const AboutUsSection: FC = () => {
   return (
-    <section className="bg-ui-blocks py-14 md:py-20">
+    <section className="bg-ui-blocks py-14 md:py-20" id="about">
       <div className="main-container flex flex-col items-center justify-center gap-8 md:flex-row md:justify-between md:gap-14 xl:items-start">
         <div className="flex grow flex-col items-center gap-8 md:items-start md:justify-between xl:flex-row xl:gap-14">
           <Title type="h2">
@@ -24,7 +24,7 @@ const AboutUsSection: FC = () => {
           alt="Woman in yoga pose"
           width={427}
           height={238}
-          className="h-[188px] w-[336px] object-cover lg:h-[238px] lg:w-[427px]"
+          className="max-h-[188px] max-w-[336px] shrink-0 object-cover lg:h-[238px] lg:w-[427px]"
         />
       </div>
     </section>
