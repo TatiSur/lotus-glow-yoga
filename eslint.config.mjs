@@ -25,6 +25,7 @@ const eslintConfig = [
       'tailwindcss/classnames-order': 'warn',
       'tailwindcss/no-custom-classname': 'off',
     },
+    ignores: [ '**/*.config.mjs', 'node_modules', '**/dist', 'build', '.next', 'public', '**/*.d.ts' ],
   },
 ];
 

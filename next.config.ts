@@ -1,16 +1,16 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   experimental: {
     turbo: {
       rules: {
         '*.svg': {
-          loaders: [ '@svgr/webpack' ],
+          loaders: ['@svgr/webpack'],
           as: '*.js',
         },
       },
     },
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
