@@ -1,9 +1,7 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 export default {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
@@ -21,10 +19,10 @@ export default {
         '2xl': '1440px',
       },
       height: {
-        'header': 'var(--height-header)',
+        header: 'var(--height-header)',
         'xs-header': 'var(--height-xs-header)',
       },
     },
   },
   plugins: [],
-} satisfies Config
+} satisfies Config;
