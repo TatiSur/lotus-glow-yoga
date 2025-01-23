@@ -2,9 +2,9 @@
 
 import { FC, useState } from 'react';
 import MenuIcon from '@/shared/assets/icons/menu.svg';
-import { SideMenu } from './side-menu';
+import { SideMenu } from '../side-menu';
 
-const Menu: FC = () => {
+const MenuButton: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -24,4 +24,4 @@ const Menu: FC = () => {
   );
 };
 
-export default Menu;
+export default MenuButton;

@@ -1,8 +1,8 @@
 'use client';
 
 import { FC, useState } from 'react';
-import CloseIcon from '@/shared/assets/icons/close.svg';
 import clsx from 'clsx';
+import { CloseButton } from '@/shared/ui/close-button';
 
 const menuItems = [
   { title: 'ABOUT THE LOTUS GLOW', link: '#about' },
@@ -25,18 +25,12 @@ const SideMenu: FC<SideMenuProps> = ({ onClose }) => {
   return (
     <nav
       className={clsx(
-        'fixed right-0 top-0 z-50 rounded-es-[160px] rounded-ss-[60px] bg-primary md:rounded-es-[300px]',
+        'fixed right-0 top-0 z-50 rounded-es-[160px] rounded-ss-[60px] bg-primary shadow-lg md:rounded-es-[300px]',
         isClosing ? 'animate-slide-out' : 'animate-slide-in'
       )}
       onAnimationEnd={() => isClosing && onClose()}
-      aria-label="Side navigation"
     >
-      <button
-        onClick={handleClose}
-        className="absolute right-[50px] flex h-40 w-28 items-center justify-center rounded-b-full bg-background text-end md:h-32 md:w-24"
-      >
-        <CloseIcon className="size-9 md:size-7" />
-      </button>
+      <CloseButton onClose={handleClose} className="right-[50px]" />
       <div className="pb-[300px] pl-[31px] pr-[59px] pt-[200px] md:px-[60px] md:pb-[236px] md:pt-[170px]">
         <ul className="flex flex-col gap-10">
           {menuItems.map(({ title, link }) => (
