@@ -3,6 +3,7 @@ import { HeroSection } from '@/widgets/hero-section';
 import { AboutUsSection } from '@/widgets/about-us-section';
 import { YogaTypesSection } from '@/widgets/yoga-types-section';
 import { BookSessionBanner } from '@/widgets/book-session-banner';
+import { InstructorsSection } from '@/widgets/instructors-section';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <AboutUsSection />
         <YogaTypesSection />
         <BookSessionBanner />
+        <InstructorsSection />
       </main>
     </>
   );
