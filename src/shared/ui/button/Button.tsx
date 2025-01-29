@@ -4,8 +4,9 @@ import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 
 const variantStyles = {
-  primary: 'bg-primary text-dark-text',
-  secondary: 'bg-secondary text-light-text',
+  primary: 'bg-primary text-dark-text hover:bg-hover',
+  secondary: 'bg-secondary text-light-text hover:bg-hover',
+  text: 'bg-transparent !px-0 py-1 hover:opacity-80',
 };
 
 const sizeStyles = {
@@ -27,7 +28,7 @@ const Button: FC<ButtonProps> = ({ children, variant = 'primary', size = 'md', c
     <button
       {...props}
       className={clsx(
-        'flex w-full items-center justify-between gap-3 rounded-full text-sm font-bold uppercase tracking-[0.23em] transition-all hover:bg-hover',
+        'flex w-full items-center justify-between gap-3 rounded-full text-sm font-bold uppercase tracking-[0.23em] transition-all',
         variantStyles[variant],
         sizeStyles[size],
         className

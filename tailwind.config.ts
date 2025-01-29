@@ -7,6 +7,7 @@ export default {
       colors: {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
+        'taupe-dark': 'var(--color-taupe-dark)',
         hover: 'var(--color-hover)',
         background: 'var(--color-background)',
         'light-text': 'var(--color-light-text)',

@@ -5,7 +5,7 @@ import { Title } from '@/shared/ui/title';
 
 const AboutUsSection: FC = () => {
   return (
-    <section className="bg-ui-blocks py-14 md:py-20" id="about">
+    <section className="bg-ui-blocks py-14 md:py-20" id="about-us">
       <div className="main-container flex flex-col items-center justify-center gap-8 md:flex-row md:justify-between md:gap-14 xl:items-start">
         <div className="flex grow flex-col items-center gap-8 md:items-start md:justify-between xl:flex-row xl:gap-14">
           <Title type="h2">

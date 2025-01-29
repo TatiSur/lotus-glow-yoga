@@ -1,6 +1,7 @@
 import { Header } from '@/widgets/header';
 import { HeroSection } from '@/widgets/hero-section';
 import { AboutUsSection } from '@/widgets/about-us-section';
+import { YogaTypesSection } from '@/widgets/yoga-types-section';
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutUsSection />
+        <YogaTypesSection />
       </main>
     </>
   );

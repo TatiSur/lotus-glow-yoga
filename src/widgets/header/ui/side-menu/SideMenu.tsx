@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { CloseButton } from '@/shared/ui/close-button';
 
 const menuItems = [
-  { title: 'ABOUT THE LOTUS GLOW', link: '#about' },
+  { title: 'ABOUT THE LOTUS GLOW', link: '#about-us' },
   { title: 'THE LOTUS YOGA TYPES', link: '#yoga-types' },
   { title: 'LOTUS INSTRUCTORS', link: '#instructors' },
   { title: 'BOOK A SESSION', link: '#booking' },
