@@ -28,7 +28,7 @@ const Button: FC<ButtonProps> = ({ children, variant = 'primary', size = 'md', c
     <button
       {...props}
       className={clsx(
-        'flex w-full items-center justify-between gap-3 rounded-full text-sm font-bold uppercase tracking-[0.23em] transition-all',
+        'flex w-full items-center justify-center gap-3 rounded-full text-sm font-bold uppercase tracking-[0.23em] transition-all',
         variantStyles[variant],
         sizeStyles[size],
         className

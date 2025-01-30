@@ -5,7 +5,7 @@ const sizeStyles = {
   h1: 'text-4xl md:text-5xl lg:text-7xl',
   h2: 'text-[40px] md:text-5xl lg:text-[53px]',
   h3: 'text-[32px] md:text-5xl lg:text-[53px]',
-  h4: 'text-2xl md:text-3xl',
+  h4: 'text-[36px] lg:text-[46px]',
   h5: 'text-2xl',
   h6: 'text-lg md:text-xl',
 };
