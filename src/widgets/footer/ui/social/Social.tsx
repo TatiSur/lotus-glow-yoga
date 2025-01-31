@@ -6,7 +6,7 @@ interface FooterSocialProps {
   className?: string;
 }
 
-const FooterSocial: FC<FooterSocialProps> = ({ className }) => {
+const Social: FC<FooterSocialProps> = ({ className }) => {
   return (
     <div className={clsx('flex flex-wrap items-center gap-[18px]', className)}>
       {SOCIAL_LINKS.map(({ Icon, link }) => {
@@ -26,4 +26,4 @@ const FooterSocial: FC<FooterSocialProps> = ({ className }) => {
   );
 };
 
-export default FooterSocial;
+export default Social;

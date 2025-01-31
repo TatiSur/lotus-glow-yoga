@@ -2,9 +2,9 @@ import { FC } from 'react';
 import Logo from '@/shared/assets/icons/logo.svg';
 import { Title } from '@/shared/ui/title';
 import { BookSessionButton } from '@/features/book-session';
-import { navLinks } from '@/shared/config';
-import FooterSocial from '../footer-social/FooterSocial';
-import FooterContacts from '../footer-contacts/FooterContacts';
+import Social from '../social/Social';
+import Contacts from '../contacts/Contacts';
+import Navigation from '../navigation/Navigation';
 
 const Footer: FC = () => {
   return (
@@ -14,31 +14,21 @@ const Footer: FC = () => {
           <Logo className="w-[214px]" />
         </div>
         <div className="flex shrink-0 basis-1/3 justify-center lg:justify-start xl:basis-1/4">
-          <FooterContacts />
+          <Contacts />
         </div>
         <div className="flex shrink-0 basis-1/3 justify-center pt-3 md:pt-0 xl:basis-1/4 xl:justify-start">
           <div>
             <Title type="h6" className="mb-[26px]">
               LOTUS GLOW
             </Title>
-            <nav>
-              <ul className="flex flex-col items-center gap-3 md:items-start">
-                {navLinks.map(({ shortTitle, link }) => (
-                  <li key={link}>
-                    <a href={link} className="text-sm text-light-text">
-                      {shortTitle}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            <Navigation />
           </div>
         </div>
         <div className="flex shrink-0 basis-full flex-col items-center pt-3 md:flex-row md:pt-0 xl:basis-1/4 xl:flex-col xl:items-start">
           <Title type="h6" className="mb-10 basis-1/3 md:mb-0 md:hidden md:opacity-0 lg:block xl:mb-10 xl:opacity-100">
             FIND YOUR INNER LIGHT
           </Title>
-          <FooterSocial className="mb-8 md:mb-0 lg:basis-1/3 xl:mb-8" />
+          <Social className="mb-8 md:mb-0 lg:basis-1/3 xl:mb-8" />
           <BookSessionButton className="mx-auto max-w-[265px] lg:ml-auto lg:basis-1/3 xl:ml-0" />
         </div>
       </div>
