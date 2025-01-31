@@ -2,10 +2,11 @@ import { FC } from 'react';
 import Image from 'next/image';
 
 import { Title } from '@/shared/ui/title';
+import { SECTION_IDS } from '@/shared/config';
 
 const AboutUsSection: FC = () => {
   return (
-    <section className="bg-ui-blocks py-14 md:py-20" id="about-us">
+    <section className="bg-ui-blocks py-14 md:py-20" id={SECTION_IDS.ABOUT_US}>
       <div className="main-container flex flex-col items-center justify-center gap-8 md:flex-row md:justify-between md:gap-14 xl:items-start">
         <div className="flex grow flex-col items-center gap-8 md:items-start md:justify-between xl:flex-row xl:gap-14">
           <Title type="h2">
@@ -19,13 +20,15 @@ const AboutUsSection: FC = () => {
             tranquility with us.
           </div>
         </div>
-        <Image
-          src="/images/about-us.webp"
-          alt="Woman in yoga pose"
-          width={427}
-          height={238}
-          className="max-h-[188px] max-w-[336px] shrink-0 object-cover lg:h-[238px] lg:w-[427px]"
-        />
+        <div className="max-h-[188px] max-w-[336px] shrink-0 lg:h-[238px] lg:w-[427px]">
+          <Image
+            src="/images/about-us.webp"
+            alt="Woman in yoga pose"
+            width={427}
+            height={238}
+            className="object-cover"
+          />
+        </div>
       </div>
     </section>
   );

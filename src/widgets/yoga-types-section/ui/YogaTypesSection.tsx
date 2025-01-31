@@ -2,10 +2,11 @@ import { FC } from 'react';
 import { Title } from '@/shared/ui/title';
 import Image from 'next/image';
 import YogaTypeCardList from './yoga-type-card-list/YogaTypeCardList';
+import { SECTION_IDS } from '@/shared/config';
 
 const YogaTypesSection: FC = () => {
   return (
-    <section className="py-14 text-light-text md:py-20" id="yoga-types">
+    <section className="py-14 text-light-text md:py-20" id={SECTION_IDS.YOGA_TYPES}>
       <div className="main-container">
         <div className="mb-12 flex items-center justify-center gap-20 md:mb-14 md:justify-between">
           <Title type="h2" className="shrink-0">

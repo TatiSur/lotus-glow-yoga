@@ -2,10 +2,11 @@ import { FC } from 'react';
 import Image from 'next/image';
 import { Title } from '@/shared/ui/title';
 import { BookSessionButton } from '@/features/book-session';
+import { SECTION_IDS } from '@/shared/config';
 
 const BookSessionBanner: FC = () => {
   return (
-    <div className="main-container">
+    <section id={SECTION_IDS.JOIN_THE_CLUB} className="main-container">
       <div className="relative min-h-[360px]">
         <Image
           src="/images/banner-bg.webp"
@@ -25,7 +26,7 @@ const BookSessionBanner: FC = () => {
           <BookSessionButton />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

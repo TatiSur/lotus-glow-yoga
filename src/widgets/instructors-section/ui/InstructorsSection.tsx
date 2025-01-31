@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import { Title } from '@/shared/ui/title';
 import { InstructorCard, instructors } from '@/entities/instructor';
+import { SECTION_IDS } from '@/shared/config';
 
 const InstructorsSection: FC = () => {
   return (
-    <section id="instructors" className="py-14 text-light-text md:py-20">
+    <section id={SECTION_IDS.INSTRUCTORS} className="py-14 text-light-text md:py-20">
       <div className="main-container">
         <div className="mb-12 flex items-center justify-center gap-20 md:mb-14 md:justify-between">
           <Title type="h2" className="shrink-0">

@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import InstagramIcon from '@/shared/assets/icons/instagram.svg';
-import YoutubeIcon from '@/shared/assets/icons/youtube.svg';
-import PinterestIcon from '@/shared/assets/icons/pinterest.svg';
+import InstagramIcon from '@/shared/assets/icons/social/instagram.svg';
+import YoutubeIcon from '@/shared/assets/icons/social/youtube.svg';
+import PinterestIcon from '@/shared/assets/icons/social/pinterest.svg';
 import { Title } from '@/shared/ui/title';
 
 interface InstructorCardProps {
