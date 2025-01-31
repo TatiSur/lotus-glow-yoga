@@ -1,14 +1,13 @@
-import { FC } from 'react';
+import { ButtonHTMLAttributes, FC } from 'react';
 import clsx from 'clsx';
 
 import CloseIcon from '@/shared/assets/icons/close.svg';
 
-interface CloseButtonProps {
+interface CloseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClose: () => void;
-  className?: string;
 }
 
-const CloseButton: FC<CloseButtonProps> = ({ onClose, className }) => {
+const CloseButton: FC<CloseButtonProps> = ({ onClose, className, ...props }) => {
   return (
     <button
       onClick={onClose}
@@ -16,6 +15,7 @@ const CloseButton: FC<CloseButtonProps> = ({ onClose, className }) => {
         'absolute flex h-40 w-28 items-center justify-center rounded-b-full bg-background text-end md:h-32 md:w-24',
         className
       )}
+      {...props}
     >
       <CloseIcon className="size-9 md:size-7" />
     </button>

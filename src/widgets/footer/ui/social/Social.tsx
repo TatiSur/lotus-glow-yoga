@@ -1,14 +1,12 @@
-import { FC } from 'react';
+import { FC, HTMLAttributes } from 'react';
 import { SOCIAL_LINKS } from '@/shared/config';
 import clsx from 'clsx';
 
-interface FooterSocialProps {
-  className?: string;
-}
+type FooterSocialProps = HTMLAttributes<HTMLDivElement>;
 
-const Social: FC<FooterSocialProps> = ({ className }) => {
+const Social: FC<FooterSocialProps> = ({ className, ...props }) => {
   return (
-    <div className={clsx('flex flex-wrap items-center gap-[18px]', className)}>
+    <div className={clsx('flex flex-wrap items-center gap-[18px]', className)} {...props}>
       {SOCIAL_LINKS.map(({ Icon, link }) => {
         return (
           <a

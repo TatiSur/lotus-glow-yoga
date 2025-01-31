@@ -1,11 +1,12 @@
-import { FC } from 'react';
+import { FC, HTMLAttributes } from 'react';
 import Image from 'next/image';
 import InstagramIcon from '@/shared/assets/icons/social/instagram.svg';
 import YoutubeIcon from '@/shared/assets/icons/social/youtube.svg';
 import PinterestIcon from '@/shared/assets/icons/social/pinterest.svg';
 import { Title } from '@/shared/ui/title';
+import clsx from 'clsx';
 
-interface InstructorCardProps {
+interface InstructorCardProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
   photo: string;
   description: string;
@@ -16,9 +17,9 @@ interface InstructorCardProps {
   };
 }
 
-const InstructorCard: FC<InstructorCardProps> = ({ name, photo, description, socialLinks }) => {
+const InstructorCard: FC<InstructorCardProps> = ({ name, photo, description, socialLinks, className, ...props }) => {
   return (
-    <div className="flex flex-col rounded-[10px] bg-ui-blocks px-9 pb-10 pt-7">
+    <div className={clsx('flex flex-col rounded-[10px] bg-ui-blocks px-9 pb-10 pt-7', className)} {...props}>
       <Image src={photo} alt={name} width={195} height={143} className="smax-w-[195px] mb-9 h-auto object-cover" />
       <Title type="h5" className="mb-7 !text-start uppercase text-primary">
         {name}

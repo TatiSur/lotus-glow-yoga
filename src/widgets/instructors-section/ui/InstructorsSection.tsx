@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Title } from '@/shared/ui/title';
-import { InstructorCard, instructors } from '@/entities/instructor';
 import { SECTION_IDS } from '@/shared/config';
+import InstructorCardList from '@/widgets/instructors-section/ui/instructor-card-list/InstructorCardList';
 
 const InstructorsSection: FC = () => {
   return (
@@ -16,11 +16,7 @@ const InstructorsSection: FC = () => {
           <hr className="hidden h-px w-full max-w-[719px] border-primary md:block" />
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-x-5 md:gap-y-[30px] xl:grid-cols-3">
-          {instructors.map((instructor) => (
-            <InstructorCard key={instructor.name} {...instructor} />
-          ))}
-        </div>
+        <InstructorCardList className="mt-10" />
       </div>
     </section>
   );

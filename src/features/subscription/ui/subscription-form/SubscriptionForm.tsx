@@ -4,14 +4,14 @@ import { InputField } from '@/shared/ui/input-field';
 
 const SubscriptionForm: FC = () => {
   return (
-    <form className="flex w-full flex-col items-center justify-end gap-[40px] md:flex-row md:gap-4">
+    <form className="flex w-full flex-col items-center justify-end gap-10 md:gap-x-4 md:gap-y-6 xl:flex-row">
       <InputField
         label="Your email"
         type="email"
         placeholder="Eg. Jane Done"
         required
         labelClassName="text-primary"
-        wrapperClassName="max-w-[459px] w-full sm:w-3/4 grow"
+        wrapperClassName="max-w-[459px] w-full grow"
       />
       <Button variant="primary" className="xs:max-w-[230px]">
         Subscribe
