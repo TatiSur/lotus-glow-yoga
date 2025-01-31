@@ -3,19 +3,35 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --color-primary: #C7A78A;
+    --color-secondary: #927C69;
+    --color-hover: #9A816B;
+    --color-background: #191614;
+    --color-light-text: #FFFFFF;
+    --color-dark-text: #191614;
+    --color-ui-blocks: #100F0E;
+    --color-taupe-dark: #4B453E;
+
+    --height-header: 160px;
+    --height-xs-header: 139px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.font-lato, h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-lato), sans-serif;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-maven-pro), sans-serif;
+}
+
+.header {
+    @apply md:h-header h-xs-header;
+}
+
+.hero {
+    @apply h-screen max-h-[668px] md:max-h-[695px];
+}
+
+.main-container {
+    @apply max-w-[1440px] mx-auto px-5 2xs:px-10 lg:px-[60px];
 }
