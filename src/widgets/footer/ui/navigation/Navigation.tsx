@@ -7,7 +7,7 @@ const Navigation: FC = () => {
       <ul className="flex flex-col items-center gap-3 md:items-start">
         {navLinks.map(({ shortTitle, link }) => (
           <li key={link}>
-            <a href={link} className="text-sm text-light-text">
+            <a href={link} className="text-sm text-light-text" aria-label={shortTitle}>
               {shortTitle}
             </a>
           </li>

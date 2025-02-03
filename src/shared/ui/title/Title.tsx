@@ -13,17 +13,18 @@ const sizeStyles = {
 interface TitleProps {
   children: ReactNode;
   type?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  size?: keyof typeof sizeStyles;
   className?: string;
 }
 
-const Title: FC<TitleProps> = ({ children, type = 'h1', className }) => {
+const Title: FC<TitleProps> = ({ children, type = 'h1', size, className }) => {
   const Component = type;
 
   return (
     <Component
       className={clsx(
         'text-center font-bold !leading-tight text-light-text md:text-start',
-        sizeStyles[type],
+        size ? sizeStyles[size] : sizeStyles[type],
         className
       )}
     >

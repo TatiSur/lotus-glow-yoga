@@ -19,7 +19,7 @@ const HeroSection: FC = () => {
         </div>
         <div className="flex gap-2.5">
           <BookSessionButton />
-          <a href="tel:3125557890" className="h-100 flex w-[87px] shrink-0 md:hidden">
+          <a href="tel:3125557890" className="h-100 flex w-[87px] shrink-0 md:hidden" aria-label="Phone">
             <PhoneIcon className="w-100 h-100" />
           </a>
         </div>

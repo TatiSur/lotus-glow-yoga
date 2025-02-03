@@ -16,8 +16,9 @@ const MenuButton: FC = () => {
       <button
         onClick={toggleMenu}
         className="flex size-full max-w-28 items-center justify-center rounded-b-full bg-primary"
+        aria-label={isOpen ? 'Close menu' : 'Open menu'} // Accessible name
       >
-        <MenuIcon className="w-[60px]" />
+        <MenuIcon className="w-[60px]" aria-hidden="true" />
       </button>
       {isOpen && <SideMenu onClose={toggleMenu} />}
     </>

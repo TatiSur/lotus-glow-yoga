@@ -18,14 +18,18 @@ const Footer: FC = () => {
         </div>
         <div className="flex shrink-0 basis-1/3 justify-center pt-3 md:pt-0 xl:basis-1/4 xl:justify-start">
           <div>
-            <Title type="h6" className="mb-[26px]">
+            <Title size="h6" type="h2" className="mb-[26px]">
               LOTUS GLOW
             </Title>
             <Navigation />
           </div>
         </div>
         <div className="flex shrink-0 basis-full flex-col items-center pt-3 md:flex-row md:pt-0 xl:basis-1/4 xl:flex-col xl:items-start">
-          <Title type="h6" className="mb-10 basis-1/3 md:mb-0 md:hidden md:opacity-0 lg:block xl:mb-10 xl:opacity-100">
+          <Title
+            size="h6"
+            type="h2"
+            className="mb-10 basis-1/3 md:mb-0 md:hidden md:opacity-0 lg:block xl:mb-10 xl:opacity-100"
+          >
             FIND YOUR INNER LIGHT
           </Title>
           <Social className="mb-8 md:mb-0 lg:basis-1/3 xl:mb-8" />
