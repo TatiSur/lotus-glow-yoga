@@ -1,4 +1,6 @@
-export const yogaTypes = [
+import { NextResponse } from 'next/server';
+
+const yogaTypes = [
   {
     title: 'Kundalini Yoga',
     description:
@@ -24,3 +26,7 @@ export const yogaTypes = [
     label: 'PRECISION AND ALIGNMENT',
   },
 ];
+
+export async function GET() {
+  return NextResponse.json(yogaTypes);
+}

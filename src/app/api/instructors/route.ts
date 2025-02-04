@@ -1,4 +1,6 @@
-export const instructors = [
+import { NextResponse } from 'next/server';
+
+const instructors = [
   {
     name: 'Ava Hart',
     photo: '/images/instructors/ava-hart.webp',
@@ -30,3 +32,7 @@ export const instructors = [
     },
   },
 ];
+
+export async function GET() {
+  return NextResponse.json(instructors);
+}

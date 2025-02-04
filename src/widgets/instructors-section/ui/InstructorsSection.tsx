@@ -2,8 +2,11 @@ import { FC } from 'react';
 import { Title } from '@/shared/ui/title';
 import { SECTION_IDS } from '@/shared/config';
 import InstructorCardList from '@/widgets/instructors-section/ui/instructor-card-list/InstructorCardList';
+import { getInstructors } from '@/entities/instructor';
 
-const InstructorsSection: FC = () => {
+const InstructorsSection: FC = async () => {
+  const { data: instructors, error } = await getInstructors();
+
   return (
     <section id={SECTION_IDS.INSTRUCTORS} className="py-14 text-light-text md:py-20">
       <div className="main-container">
@@ -16,7 +19,7 @@ const InstructorsSection: FC = () => {
           <hr className="hidden h-px w-full max-w-[719px] border-primary md:block" />
         </div>
 
-        <InstructorCardList className="mt-10" />
+        <InstructorCardList className="mt-10" instructors={instructors} error={error} />
       </div>
     </section>
   );

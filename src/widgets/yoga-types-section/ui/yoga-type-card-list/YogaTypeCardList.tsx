@@ -1,10 +1,14 @@
 'use client';
 
 import { FC, useState } from 'react';
-import { YogaTypeCard, yogaTypes } from '@/entities/yoga-types';
+import { YogaType, YogaTypeCard } from '@/entities/yoga-types';
 import { BookSessionModal } from '@/features/book-session';
 
-const YogaTypeCardList: FC = () => {
+interface YogaTypeCardListProps {
+  data: [] | YogaType[];
+}
+
+const YogaTypeCardList: FC<YogaTypeCardListProps> = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
@@ -13,7 +17,7 @@ const YogaTypeCardList: FC = () => {
 
   return (
     <>
-      {yogaTypes.map(({ title, description, label }, index) => (
+      {data.map(({ title, description, label }, index) => (
         <YogaTypeCard
           key={title}
           title={title}
