@@ -26,11 +26,12 @@ const HeroSection: FC = () => {
       </div>
       <div className="relative -mr-10 hidden flex-1 items-end md:flex lg:mr-0">
         <Image
-          src="/images/hero-bg.webp"
+          src="/images/hero-img.webp"
           alt="Woman in yoga pose"
           width={650}
           height={1043}
-          className="absolute top-[-var(--height-header)] h-[calc(100%+var(--height-header))] object-cover"
+          className="absolute top-[-var(--height-header)] h-[calc(100%+var(--height-header))] w-auto object-cover"
+          priority
         />
         <a
           href="tel:3125557890"

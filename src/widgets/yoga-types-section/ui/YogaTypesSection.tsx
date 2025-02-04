@@ -30,7 +30,7 @@ const YogaTypesSection: FC = async () => {
                 alt="Woman meditating"
                 width={650}
                 height={325}
-                className="h-full rounded-[10px] object-cover"
+                className="h-full w-auto rounded-[10px] object-cover"
               />
             </div>
 
@@ -41,7 +41,7 @@ const YogaTypesSection: FC = async () => {
                 alt="Woman stretching"
                 width={647}
                 height={325}
-                className="h-full rounded-[10px] object-cover"
+                className="h-full w-auto rounded-[10px] object-cover"
               />
             </div>
           </div>
