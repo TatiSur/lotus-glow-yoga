@@ -4,6 +4,7 @@ import { FC, useState } from 'react';
 import clsx from 'clsx';
 import { CloseButton } from '@/shared/ui/close-button';
 import { navLinks } from '@/shared/config';
+import { useActiveSection } from '@/shared/hooks/useActiveSection';
 
 interface SideMenuProps {
   onClose: () => void;
@@ -11,6 +12,8 @@ interface SideMenuProps {
 
 const SideMenu: FC<SideMenuProps> = ({ onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
+
+  const activeSection = useActiveSection();
 
   const handleClose = () => {
     setIsClosing(true);
@@ -32,7 +35,10 @@ const SideMenu: FC<SideMenuProps> = ({ onClose }) => {
               <a
                 href={link}
                 onClick={handleClose}
-                className="font-lato text-3xl font-bold uppercase tracking-[0.06em] text-dark-text"
+                className={clsx(
+                  'font-lato text-3xl font-bold uppercase tracking-[0.06em] text-dark-text',
+                  link.replace('#', '') === activeSection && 'text-light-text'
+                )}
               >
                 {title}
               </a>
