@@ -8,6 +8,7 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: ReactNode;
   wrapperClassName?: string;
   labelClassName?: string;
+  errorMessage?: string;
 }
 
 const InputField: FC<InputFieldProps> = ({
@@ -18,6 +19,7 @@ const InputField: FC<InputFieldProps> = ({
   className,
   id,
   name,
+  errorMessage,
   ...props
 }) => {
   return (
@@ -40,10 +42,14 @@ const InputField: FC<InputFieldProps> = ({
           'placeholder:text-light-text placeholder:opacity-50',
           'focus:outline-none focus:ring-2 focus:ring-primary',
           icon ? 'pr-20' : 'pr-10',
+          errorMessage ? 'border-red-500 focus:ring-red-500' : '',
           className
         )}
       />
       {icon && <div className="absolute right-8 text-light-text">{icon}</div>}
+      {errorMessage && (
+        <p className="absolute -bottom-3 left-10 translate-y-1/2 text-sm text-red-500">{errorMessage}</p>
+      )}
     </div>
   );
 };
