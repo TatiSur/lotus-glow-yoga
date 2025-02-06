@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/*         CSS VARIABLES       */
+/* =========================== */
 :root {
+    /* Colors */
     --color-primary: #C7A78A;
     --color-secondary: #927C69;
     --color-hover: #9A816B;
@@ -12,10 +15,13 @@
     --color-ui-blocks: #100F0E;
     --color-taupe-dark: #4B453E;
 
+    /* Header Heights */
     --height-header: 160px;
     --height-xs-header: 139px;
 }
 
+/*         TYPOGRAPHY          */
+/* =========================== */
 .font-lato, h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-lato), sans-serif;
 }
@@ -24,6 +30,8 @@ body {
     font-family: var(--font-maven-pro), sans-serif;
 }
 
+/*         LAYOUT CLASSES      */
+/* =========================== */
 .header {
     @apply md:h-header h-xs-header;
 }
@@ -34,4 +42,32 @@ body {
 
 .main-container {
     @apply max-w-[1440px] mx-auto px-5 2xs:px-10 lg:px-[60px];
+}
+
+/*      SCROLLBAR STYLING      */
+/* =========================== */
+@layer utilities {
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--color-ui-blocks);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-secondary);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-primary);
+    }
+
+    /* Firefox scrollbar */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-secondary) var(--color-ui-blocks);
+    }
 }
