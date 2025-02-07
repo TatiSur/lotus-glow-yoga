@@ -1,6 +1,8 @@
 import { FC, InputHTMLAttributes, ReactNode } from 'react';
 import clsx from 'clsx';
 
+import RequiredIcon from '@/shared/assets/icons/required-icon.svg';
+
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   id: string;
@@ -19,6 +21,7 @@ const InputField: FC<InputFieldProps> = ({
   className,
   id,
   name,
+  required,
   errorMessage,
   ...props
 }) => {
@@ -37,6 +40,7 @@ const InputField: FC<InputFieldProps> = ({
         {...props}
         id={id}
         name={name}
+        required={required}
         className={clsx(
           'w-full rounded-full border-2 border-light-text bg-transparent pb-3.5 pl-10 pt-6 text-light-text',
           'placeholder:text-light-text placeholder:opacity-50',
@@ -47,6 +51,11 @@ const InputField: FC<InputFieldProps> = ({
         )}
       />
       {icon && <div className="absolute right-8 text-light-text">{icon}</div>}
+      {required && (
+        <div className="absolute right-8 top-3.5 text-light-text">
+          <RequiredIcon className="size-2" />
+        </div>
+      )}
       {errorMessage && (
         <p className="absolute -bottom-3 left-10 translate-y-1/2 text-sm text-red-500">{errorMessage}</p>
       )}
