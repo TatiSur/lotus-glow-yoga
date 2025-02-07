@@ -21,7 +21,9 @@ const Contacts: FC = () => {
               >
                 <Icon aria-hidden="true" />
               </a>
-              <p className="whitespace-pre-line text-sm text-light-text">{text}</p>
+              <p className="whitespace-pre-line text-sm text-light-text">
+                {text}
+              </p>
             </div>
           );
         })}

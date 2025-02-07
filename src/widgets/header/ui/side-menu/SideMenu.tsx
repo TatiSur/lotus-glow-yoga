@@ -31,7 +31,10 @@ const SideMenu: FC<SideMenuProps> = ({ onClose }) => {
       <div className="pb-[300px] pl-[31px] pr-[59px] pt-[200px] md:px-[60px] md:pb-[236px] md:pt-[170px]">
         <ul className="flex flex-col gap-10">
           {navLinks.map(({ title, link }) => (
-            <li key={title} className="w-[312px] border-b border-background pb-3 last:border-0 md:w-[533px] md:pb-5">
+            <li
+              key={title}
+              className="w-[312px] border-b border-background pb-3 last:border-0 md:w-[533px] md:pb-5"
+            >
               <a
                 href={link}
                 onClick={handleClose}

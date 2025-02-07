@@ -57,7 +57,9 @@ const InputField: FC<InputFieldProps> = ({
         </div>
       )}
       {errorMessage && (
-        <p className="absolute -bottom-3 left-10 translate-y-1/2 text-sm text-red-500">{errorMessage}</p>
+        <p className="absolute -bottom-3 left-10 translate-y-1/2 text-sm text-red-500">
+          {errorMessage}
+        </p>
       )}
     </div>
   );

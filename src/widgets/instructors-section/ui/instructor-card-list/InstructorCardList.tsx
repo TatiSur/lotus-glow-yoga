@@ -18,12 +18,19 @@ interface InstructorCardListProps extends HTMLAttributes<HTMLDivElement> {
   error: string | null;
 }
 
-const InstructorCardList: FC<InstructorCardListProps> = ({ instructors, error, className, ...props }) => {
+const InstructorCardList: FC<InstructorCardListProps> = ({
+  instructors,
+  error,
+  className,
+  ...props
+}) => {
   const totalInstructors = instructors.length;
   const placeholders3 = getPlaceholders(totalInstructors, 3);
   const placeholders2 = getPlaceholders(totalInstructors, 2);
 
-  const placeholderText = totalInstructors ? '' : error || 'The information is temporarily missing';
+  const placeholderText = totalInstructors
+    ? ''
+    : error || 'The information is temporarily missing';
 
   return (
     <div
@@ -34,7 +41,11 @@ const InstructorCardList: FC<InstructorCardListProps> = ({ instructors, error, c
       {...props}
     >
       {instructors.map((instructor, index) => (
-        <InstructorCard key={instructor.name} {...instructor} style={{ order: index || '-9999' }} />
+        <InstructorCard
+          key={instructor.name}
+          {...instructor}
+          style={{ order: index || '-9999' }}
+        />
       ))}
 
       {placeholders3.map((_, index) => (
@@ -53,7 +64,9 @@ const InstructorCardList: FC<InstructorCardListProps> = ({ instructors, error, c
         />
       ))}
 
-      {!!totalInstructors || <PlaceholderCard text={placeholderText} className="flex md:hidden" />}
+      {!!totalInstructors || (
+        <PlaceholderCard text={placeholderText} className="flex md:hidden" />
+      )}
     </div>
   );
 };

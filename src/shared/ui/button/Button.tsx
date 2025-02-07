@@ -23,7 +23,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: Size;
 }
 
-const Button: FC<ButtonProps> = ({ children, variant = 'primary', size = 'md', className, ...props }) => {
+const Button: FC<ButtonProps> = ({
+  children,
+  variant = 'primary',
+  size = 'md',
+  className,
+  ...props
+}) => {
   return (
     <button
       {...props}

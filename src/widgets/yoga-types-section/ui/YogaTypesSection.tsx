@@ -9,11 +9,15 @@ const YogaTypesSection: FC = async () => {
   const { data: yogaTypes, error } = await getYogaTypes();
 
   return (
-    <section className="py-14 text-light-text md:py-20" id={SECTION_IDS.YOGA_TYPES}>
+    <section
+      className="py-14 text-light-text md:py-20"
+      id={SECTION_IDS.YOGA_TYPES}
+    >
       <div className="main-container">
         <div className="mb-12 flex items-center justify-center gap-20 md:mb-14 md:justify-between">
           <Title type="h2" className="shrink-0">
-            DISCOVER <br /> THE LOTUS <span className="text-primary">TYPES</span>
+            DISCOVER <br /> THE LOTUS{' '}
+            <span className="text-primary">TYPES</span>
           </Title>
           <hr className="hidden h-px w-full max-w-[719px] border-primary md:block" />
         </div>

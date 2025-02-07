@@ -15,10 +15,10 @@ const SubscriptionForm: FC = () => {
   const { addToast } = useToast();
 
   const [localError, setLocalError] = useState<string>('');
-  const [state, formAction, isPending] = useActionState<SubscriptionFormState, FormData>(
-    subscribeAction,
-    initialSubscriptionState
-  );
+  const [state, formAction, isPending] = useActionState<
+    SubscriptionFormState,
+    FormData
+  >(subscribeAction, initialSubscriptionState);
 
   useEffect(() => {
     if (state.fieldError) {
@@ -54,7 +54,12 @@ const SubscriptionForm: FC = () => {
       />
       {/*<SubmitButton className="xs:max-w-[230px]">Subscribe</SubmitButton>*/}
 
-      <Button type="submit" variant="primary" disabled={isPending} className="xs:max-w-[230px]">
+      <Button
+        type="submit"
+        variant="primary"
+        disabled={isPending}
+        className="xs:max-w-[230px]"
+      >
         {isPending ? (
           <>
             Submitting...

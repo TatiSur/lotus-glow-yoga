@@ -10,7 +10,9 @@ export const metadata: Metadata = {
   description: 'Find your inner light',
 };
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className={`${lato.variable} ${mavenPro.variable}`}>
       <body className="bg-background">

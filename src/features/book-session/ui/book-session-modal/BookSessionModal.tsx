@@ -13,7 +13,10 @@ interface BookSessionModalProps {
   className?: string;
 }
 
-const BookSessionModal: FC<BookSessionModalProps> = ({ onClose, className }) => {
+const BookSessionModal: FC<BookSessionModalProps> = ({
+  onClose,
+  className,
+}) => {
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
@@ -64,7 +67,10 @@ const BookSessionModal: FC<BookSessionModalProps> = ({ onClose, className }) => 
             className="absolute size-full object-cover"
           />
           {/* Close button */}
-          <CloseButton onClose={handleClose} className="absolute right-[35px] z-[101] h-28 md:right-[100px]" />
+          <CloseButton
+            onClose={handleClose}
+            className="absolute right-[35px] z-[101] h-28 md:right-[100px]"
+          />
           <div className="relative text-center md:pl-20 md:text-start">
             <div className="pb-3 pt-[150px] text-sm tracking-[0.6em] text-primary md:pb-4 md:pt-[124px] md:text-base">
               JOIN THE LOTUS GLOW

@@ -6,7 +6,10 @@ type FooterSocialProps = HTMLAttributes<HTMLDivElement>;
 
 const Social: FC<FooterSocialProps> = ({ className, ...props }) => {
   return (
-    <div className={clsx('flex flex-wrap items-center gap-[18px]', className)} {...props}>
+    <div
+      className={clsx('flex flex-wrap items-center gap-[18px]', className)}
+      {...props}
+    >
       {SOCIAL_LINKS.map(({ Icon, link, label }) => {
         return (
           <a

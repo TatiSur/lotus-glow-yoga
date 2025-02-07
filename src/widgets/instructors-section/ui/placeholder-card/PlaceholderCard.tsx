@@ -5,7 +5,11 @@ interface PlaceholderCardProps extends HTMLAttributes<HTMLDivElement> {
   text?: string;
 }
 
-const PlaceholderCard: FC<PlaceholderCardProps> = ({ text = '', className, ...props }) => {
+const PlaceholderCard: FC<PlaceholderCardProps> = ({
+  text = '',
+  className,
+  ...props
+}) => {
   return (
     <div
       className={clsx(

@@ -1,6 +1,13 @@
 'use client';
 
-import { createContext, FC, ReactNode, useCallback, useContext, useState } from 'react';
+import {
+  createContext,
+  FC,
+  ReactNode,
+  useCallback,
+  useContext,
+  useState,
+} from 'react';
 import { ToastList, ToastMessage, ToastType } from '@/features/toast';
 
 interface ToastParams {
@@ -18,16 +25,20 @@ const ToastContext = createContext<ToastContextType | undefined>(undefined);
 export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
-  const removeToast = (id: number) => setToasts((prev) => prev.filter((toast) => toast.id !== id));
+  const removeToast = (id: number) =>
+    setToasts((prev) => prev.filter((toast) => toast.id !== id));
 
-  const addToast = useCallback(({ message, type = 'info', duration = 3000 }: ToastParams) => {
-    const id = Date.now();
-    setToasts((prev) => [...prev, { id, message, type, duration }]);
+  const addToast = useCallback(
+    ({ message, type = 'info', duration = 3000 }: ToastParams) => {
+      const id = Date.now();
+      setToasts((prev) => [...prev, { id, message, type, duration }]);
 
-    setTimeout(() => {
-      removeToast(id);
-    }, duration);
-  }, []);
+      setTimeout(() => {
+        removeToast(id);
+      }, duration);
+    },
+    []
+  );
 
   return (
     <ToastContext.Provider value={{ addToast }}>

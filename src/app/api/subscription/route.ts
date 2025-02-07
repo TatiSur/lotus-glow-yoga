@@ -7,7 +7,10 @@ export async function POST(req: Request) {
 
     // check if email is valid
     if (!email || !email.match(EMAIL_REGEX)) {
-      return NextResponse.json({ message: 'Invalid email address' }, { status: 400 });
+      return NextResponse.json(
+        { message: 'Invalid email address' },
+        { status: 400 }
+      );
     }
 
     // check if email already exists
@@ -17,6 +20,9 @@ export async function POST(req: Request) {
   } catch (error) {
     console.log('Subscription error', error);
 
-    return NextResponse.json({ message: (error as Error).message || 'Something went wrong' }, { status: 500 });
+    return NextResponse.json(
+      { message: (error as Error).message || 'Something went wrong' },
+      { status: 500 }
+    );
   }
 }
