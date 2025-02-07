@@ -17,7 +17,7 @@ const CloseButton: FC<CloseButtonProps> = ({ onClose, className, ...props }) => 
       )}
       {...props}
     >
-      <CloseIcon className="size-9 md:size-7" />
+      <CloseIcon className="size-9 text-primary md:size-7" />
     </button>
   );
 };
