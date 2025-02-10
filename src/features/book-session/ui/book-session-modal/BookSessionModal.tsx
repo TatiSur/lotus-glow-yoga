@@ -1,12 +1,13 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
+import { FC, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import clsx from 'clsx';
-import { CloseButton } from '@/shared/ui/close-button';
 import Image from 'next/image';
 import { Title } from '@/shared/ui/title';
-import { createPortal } from 'react-dom';
+import { CloseButton } from '@/shared/ui/close-button';
 import BookSessionForm from '../book-session-form/BookSessionForm';
+import { useModalAccessibility } from './useModalAccessibility';
 
 interface BookSessionModalProps {
   onClose: () => void;
@@ -18,32 +19,17 @@ const BookSessionModal: FC<BookSessionModalProps> = ({
   className,
 }) => {
   const [isClosing, setIsClosing] = useState(false);
-
-  useEffect(() => {
-    // Block scrolling when the modal is open
-    document.body.classList.add('overflow-hidden');
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        handleClose();
-      }
-    };
-
-    window.addEventListener('keydown', handleEscape);
-
-    return () => {
-      window.removeEventListener('keydown', handleEscape);
-      // Remove the overflow-hidden class when the modal is closed
-      document.body.classList.remove('overflow-hidden');
-    };
-  }, []);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClose = () => {
     setIsClosing(true);
   };
 
+  useModalAccessibility(modalRef, handleClose);
+
   return createPortal(
     <div
+      ref={modalRef}
       className={clsx(
         'fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-md',
         isClosing ? 'animate-fade-out' : 'animate-fade-in'
