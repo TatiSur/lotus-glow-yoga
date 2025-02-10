@@ -44,9 +44,10 @@ const InputField: FC<InputFieldProps> = ({
         className={clsx(
           'w-full rounded-full border-2 border-light-text bg-transparent pb-3.5 pl-10 pt-6 text-light-text',
           'placeholder:text-light-text placeholder:opacity-50',
-          'focus:outline-none focus:ring-2 focus:ring-primary',
+          'focus:outline-none focus:ring-2 focus:ring-hover',
+          'hover:ring-2 hover:ring-hover',
           icon ? 'pr-20' : 'pr-10',
-          errorMessage ? 'border-red-500 focus:ring-red-500' : '',
+          errorMessage ? 'border-red-500' : '',
           className
         )}
       />

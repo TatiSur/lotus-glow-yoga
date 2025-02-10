@@ -40,7 +40,7 @@ const HeroSection: FC = () => {
         />
         <a
           href="tel:3125557890"
-          className="relative block w-full rounded-t-full bg-primary py-7 pl-[116px] pr-12 text-center text-lg font-medium tracking-[0.23em] text-dark-text"
+          className="relative block w-full rounded-tl-3xl rounded-tr-[50px] bg-primary py-7 pl-[116px] pr-12 text-center text-lg font-medium tracking-[0.23em] text-dark-text"
         >
           <span className="font-lato hidden font-bold xl:inline">
             GIVE US A CALL:
