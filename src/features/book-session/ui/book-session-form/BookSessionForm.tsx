@@ -7,12 +7,13 @@ import CalendarOutlineIcon from '@/shared/assets/icons/calendar-outline.svg';
 import TimeOutlineIcon from '@/shared/assets/icons/time-outline.svg';
 import { Button } from '@/shared/ui/button';
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
+import { CustomSelect } from '@/shared/ui/custom-select';
 
 const sessionTypes = [
-  'Yin Yoga',
-  'Kundalini Yoga',
-  'Bikram Yoga',
-  'Iyengar Yoga',
+  { value: 'yin', label: 'Yin Yoga' },
+  { value: 'kundalini', label: 'Kundalini Yoga' },
+  { value: 'bikram', label: 'Bikram Yoga' },
+  { value: 'iyengar', label: 'Iyengar Yoga' },
 ];
 
 const BookSessionForm: FC = () => {
@@ -23,14 +24,14 @@ const BookSessionForm: FC = () => {
         name="name"
         label="Full Name"
         placeholder="Eg. Jane Doe"
-        icon="*"
+        required
       />
       <InputField
         id="email"
         name="email"
         label="Email Address"
         placeholder="Eg. janedoe@gmail.com"
-        icon="*"
+        required
       />
       <InputField
         id="phone"
@@ -38,18 +39,12 @@ const BookSessionForm: FC = () => {
         label="Phone Number"
         placeholder="Eg. 180 1200 1000"
       />
-      <div className="relative">
-        <label className="absolute left-[42px] top-3 text-[10px] font-bold uppercase tracking-[0.3em] text-background">
-          Preferred Session Type
-        </label>
-        <select className="w-full rounded-full border-2 border-light-text bg-transparent pb-3.5 pl-10 pr-20 pt-6 text-light-text placeholder:text-light-text placeholder:opacity-50 focus:outline-none focus:ring-2 focus:ring-primary">
-          {sessionTypes.map((type) => (
-            <option key={type} value={type} className="text-dark-text">
-              {type}
-            </option>
-          ))}
-        </select>
-      </div>
+      <CustomSelect
+        name="sessionType"
+        label="Preferred Session Type"
+        errorMessage=""
+        options={sessionTypes}
+      />
       <InputField
         id="date"
         name="date"

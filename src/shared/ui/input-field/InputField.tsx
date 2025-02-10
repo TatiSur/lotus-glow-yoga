@@ -2,10 +2,11 @@ import { FC, InputHTMLAttributes, ReactNode } from 'react';
 import clsx from 'clsx';
 
 import RequiredIcon from '@/shared/assets/icons/required-icon.svg';
+import { FieldLabel } from '@/shared/ui/field-label';
+import { FieldError } from '@/shared/ui/field-error';
 
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  id: string;
   name: string;
   icon?: ReactNode;
   wrapperClassName?: string;
@@ -27,15 +28,9 @@ const InputField: FC<InputFieldProps> = ({
 }) => {
   return (
     <div className={clsx('relative flex items-center', wrapperClassName)}>
-      <label
-        className={clsx(
-          'absolute left-[42px] top-3 text-[10px] font-bold uppercase tracking-[0.3em] text-background',
-          labelClassName
-        )}
-        htmlFor={id}
-      >
+      <FieldLabel className={labelClassName} htmlFor={id || `${name}-input`}>
         {label}
-      </label>
+      </FieldLabel>
       <input
         {...props}
         id={id}
@@ -57,11 +52,7 @@ const InputField: FC<InputFieldProps> = ({
           <RequiredIcon className="size-2" />
         </div>
       )}
-      {errorMessage && (
-        <p className="absolute -bottom-3 left-10 translate-y-1/2 text-sm text-red-500">
-          {errorMessage}
-        </p>
-      )}
+      {errorMessage && <FieldError>{errorMessage}</FieldError>}
     </div>
   );
 };
