@@ -33,11 +33,13 @@ const customClassNames: ClassNamesConfig<SelectOption> = {
       { 'ring-2 ring-hover': isFocused }
     ),
 
-  menu: () => 'rounded-lg bg-white shadow-lg border border-hover mt-1.5 py-2',
+  menu: () =>
+    'rounded-lg bg-background shadow-lg border border-2 border-hover mt-1.5 py-2',
 
   option: ({ isSelected, isFocused }) =>
-    clsx('cursor-pointer px-10 py-2 text-dark-text', {
-      'bg-hover text-white': isSelected || isFocused,
+    clsx('cursor-pointer px-10 py-2 text-light-text', {
+      'bg-hover font-bold hover:bg-primary': isSelected,
+      'bg-primary': isFocused,
     }),
 
   placeholder: () => 'text-light-text opacity-50',

@@ -46,9 +46,13 @@ const InputField: FC<InputFieldProps> = ({
           className
         )}
       />
-      {icon && <div className="absolute right-8 text-light-text">{icon}</div>}
+      {icon && (
+        <div className="pointer-events-none absolute right-8 top-1/2 -translate-y-1/2 text-light-text">
+          {icon}
+        </div>
+      )}
       {required && (
-        <div className="absolute right-8 top-3.5 text-light-text">
+        <div className="pointer-events-none absolute right-8 top-3.5 text-light-text">
           <RequiredIcon className="size-2" />
         </div>
       )}
