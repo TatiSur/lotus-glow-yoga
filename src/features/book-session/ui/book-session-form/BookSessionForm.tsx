@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, HTMLAttributes } from 'react';
 import { InputField } from '@/shared/ui/input-field';
 
 import CalendarOutlineIcon from '@/shared/assets/icons/calendar-outline.svg';
@@ -9,6 +9,10 @@ import { Button } from '@/shared/ui/button';
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
 import { CustomSelect } from '@/shared/ui/custom-select';
 
+interface BookSessionFormProps extends HTMLAttributes<HTMLFormElement> {
+  sessionType?: string;
+}
+
 const sessionTypes = [
   { value: 'yin', label: 'Yin Yoga' },
   { value: 'kundalini', label: 'Kundalini Yoga' },
@@ -16,9 +20,15 @@ const sessionTypes = [
   { value: 'iyengar', label: 'Iyengar Yoga' },
 ];
 
-const BookSessionForm: FC = () => {
+const BookSessionForm: FC<BookSessionFormProps> = ({
+  sessionType = '',
+  ...props
+}) => {
   return (
-    <form className="mx-auto flex w-full max-w-[344px] flex-col gap-7 md:grid md:max-w-full md:grid-cols-2">
+    <form
+      className="mx-auto flex w-full max-w-[344px] flex-col gap-7 md:grid md:max-w-full md:grid-cols-2"
+      {...props}
+    >
       <InputField
         id="name"
         name="name"
@@ -44,6 +54,7 @@ const BookSessionForm: FC = () => {
         label="Preferred Session Type"
         errorMessage=""
         options={sessionTypes}
+        defaultValue={sessionTypes.find((type) => type.value === sessionType)}
       />
       <InputField
         id="date"

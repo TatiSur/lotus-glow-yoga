@@ -11,11 +11,13 @@ import { useModalAccessibility } from './useModalAccessibility';
 
 interface BookSessionModalProps {
   onClose: () => void;
+  sessionType?: string;
   className?: string;
 }
 
 const BookSessionModal: FC<BookSessionModalProps> = ({
   onClose,
+  sessionType,
   className,
 }) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -69,7 +71,7 @@ const BookSessionModal: FC<BookSessionModalProps> = ({
 
         {/* Content */}
         <div className="px-8 pb-14 pt-8 md:px-20 md:pb-32 md:pt-12">
-          <BookSessionForm />
+          <BookSessionForm sessionType={sessionType} />
         </div>
       </div>
     </div>,
