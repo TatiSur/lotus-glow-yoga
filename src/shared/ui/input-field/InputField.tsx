@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import RequiredIcon from '@/shared/assets/icons/required-icon.svg';
 import { FieldLabel } from '@/shared/ui/field-label';
 import { FieldError } from '@/shared/ui/field-error';
+import { FieldIcon } from '../field-icon';
 
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -24,6 +25,7 @@ const InputField: FC<InputFieldProps> = ({
   name,
   required,
   errorMessage,
+  disabled,
   ...props
 }) => {
   return (
@@ -36,24 +38,23 @@ const InputField: FC<InputFieldProps> = ({
         id={id}
         name={name}
         required={required}
+        disabled={disabled}
         className={clsx(
-          'w-full rounded-full border-2 border-light-text bg-transparent pb-3.5 pl-10 pt-6 text-light-text',
-          'placeholder:text-light-text placeholder:opacity-50',
-          'focus:outline-none focus:ring-2 focus:ring-hover',
-          'hover:ring-2 hover:ring-hover',
+          'base-field-styles',
           icon ? 'pr-20' : 'pr-10',
-          errorMessage ? 'border-red-500' : '',
+          errorMessage && 'base-field-error-styles',
           className
         )}
       />
-      {icon && (
-        <div className="pointer-events-none absolute right-8 top-1/2 -translate-y-1/2 text-light-text">
-          {icon}
-        </div>
-      )}
+      {icon && <FieldIcon icon={icon} disabled={disabled} />}
       {required && (
-        <div className="pointer-events-none absolute right-8 top-3.5 text-light-text">
-          <RequiredIcon className="size-2" />
+        <div className="pointer-events-none absolute right-8 top-3.5">
+          <RequiredIcon
+            className={clsx(
+              'size-2',
+              disabled ? 'text-gray-500' : 'text-light-text'
+            )}
+          />
         </div>
       )}
       {errorMessage && <FieldError>{errorMessage}</FieldError>}

@@ -1,4 +1,6 @@
-import { FC } from 'react';
+'use client';
+
+import { FC, useState } from 'react';
 import Select, {
   ClassNamesConfig,
   GroupBase,
@@ -8,7 +10,7 @@ import clsx from 'clsx';
 import { FieldLabel } from '@/shared/ui/field-label';
 import { FieldError } from '@/shared/ui/field-error';
 
-interface SelectOption {
+export interface SelectOption {
   value: string;
   label: string;
 }
@@ -24,14 +26,15 @@ interface CustomSelectProps<
   errorMessage?: string;
 }
 
-const customClassNames: ClassNamesConfig<SelectOption> = {
-  control: ({ isFocused }) =>
-    clsx(
-      'w-full appearance-none rounded-full border-2 border-light-text bg-transparent text-light-text outline-none',
-      'pb-3.5 pl-10 pr-8 pt-6',
-      'hover:ring-2 hover:ring-hover',
-      { 'ring-2 ring-hover': isFocused }
-    ),
+const customClassNames = (
+  isError: boolean
+): ClassNamesConfig<SelectOption> => ({
+  control: ({ isFocused, isDisabled }) =>
+    clsx('base-field-styles pr-8', {
+      'ring-2 ring-hover': isFocused,
+      'base-field-error-styles': isError,
+      'border-gray-500/50 bg-gray-500/50 text-gray-500': isDisabled,
+    }),
 
   menu: () =>
     'rounded-lg bg-background shadow-lg border border-2 border-hover mt-1.5 py-2',
@@ -45,30 +48,33 @@ const customClassNames: ClassNamesConfig<SelectOption> = {
   placeholder: () => 'text-light-text opacity-50',
 
   singleValue: () => 'text-light-text',
-};
+});
 
 const CustomSelect: FC<CustomSelectProps> = ({
   id,
   name,
   label,
-  errorMessage,
+  errorMessage = '',
   isSearchable = false,
   ...props
 }) => {
   const selectId = id || `select-${name}`;
 
+  const [error, setError] = useState<string>(errorMessage);
+
   return (
     <div className="relative w-full">
-      {label && <FieldLabel htmlFor={selectId}>{label}</FieldLabel>}
+      {label && <FieldLabel>{label}</FieldLabel>}
       <Select
         unstyled
         id={selectId}
         name={name}
         isSearchable={isSearchable}
-        classNames={customClassNames}
+        classNames={customClassNames(!!error)}
+        onInputChange={() => setError('')}
         {...props}
       />
-      {errorMessage && <FieldError>{errorMessage}</FieldError>}
+      {error && <FieldError>{error}</FieldError>}
     </div>
   );
 };

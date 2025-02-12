@@ -71,3 +71,31 @@ body {
         scrollbar-color: var(--color-secondary) var(--color-ui-blocks);
     }
 }
+
+/*         COMPONENTS           */
+/* =========================== */
+@layer components {
+    .base-field-styles {
+        @apply w-full rounded-full border-2 border-light-text bg-transparent pb-3.5 pl-10 pt-6 text-start text-light-text;
+    }
+
+    .base-field-styles::placeholder {
+        @apply text-light-text opacity-50;
+    }
+
+    .base-field-styles:focus {
+        @apply outline-none ring-2 ring-hover;
+    }
+
+    .base-field-styles:enabled:hover {
+        @apply ring-2 ring-hover;
+    }
+
+    .base-field-styles:disabled {
+        @apply cursor-not-allowed border-gray-500/50 bg-gray-500/50 text-gray-500;
+    }
+
+    .base-field-error-styles {
+        @apply border-red-500;
+    }
+}
