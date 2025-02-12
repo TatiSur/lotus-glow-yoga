@@ -1,19 +1,22 @@
 'use client';
 
-import { FC, HTMLAttributes } from 'react';
-import { InputField } from '@/shared/ui/input-field';
+import { FC, HTMLAttributes, useEffect, useState } from 'react';
+import { SingleValue } from 'react-select';
 
-import CalendarOutlineIcon from '@/shared/assets/icons/calendar-outline.svg';
-import TimeOutlineIcon from '@/shared/assets/icons/time-outline.svg';
+import { InputField } from '@/shared/ui/input-field';
 import { Button } from '@/shared/ui/button';
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
 import { CustomSelect } from '@/shared/ui/custom-select';
+import { DatePicker } from '@/shared/ui/date-picker';
+import { SelectOption } from '@/shared/ui/custom-select/CustomSelect';
+
+import { BookSessionDatePicker } from '../book-session-date-picker';
 
 interface BookSessionFormProps extends HTMLAttributes<HTMLFormElement> {
   sessionType?: string;
 }
 
-const sessionTypes = [
+const sessionTypes: SelectOption[] = [
   { value: 'yin', label: 'Yin Yoga' },
   { value: 'kundalini', label: 'Kundalini Yoga' },
   { value: 'bikram', label: 'Bikram Yoga' },
@@ -24,6 +27,24 @@ const BookSessionForm: FC<BookSessionFormProps> = ({
   sessionType = '',
   ...props
 }) => {
+  const [selectedSessionType, setSelectedSessionType] =
+    useState<SelectOption | null>(null);
+
+  const handleSessionTypeChange = (
+    newValue: SingleValue<SelectOption>
+  ): void => {
+    setSelectedSessionType(newValue);
+  };
+
+  useEffect(() => {
+    if (sessionType) {
+      const selectedSessionType = sessionTypes.find(
+        (type) => type.value === sessionType
+      );
+      if (selectedSessionType) setSelectedSessionType(selectedSessionType);
+    }
+  }, [sessionType]);
+
   return (
     <form
       className="mx-auto flex w-full max-w-[344px] flex-col gap-7 md:grid md:max-w-full md:grid-cols-2"
@@ -52,23 +73,21 @@ const BookSessionForm: FC<BookSessionFormProps> = ({
       <CustomSelect
         name="sessionType"
         label="Preferred Session Type"
-        errorMessage=""
+        value={selectedSessionType}
+        onChange={handleSessionTypeChange}
         options={sessionTypes}
-        defaultValue={sessionTypes.find((type) => type.value === sessionType)}
       />
-      <InputField
-        id="date"
+
+      <BookSessionDatePicker
         name="date"
         label="Preferred Date"
-        placeholder="DD/MM/YYYY"
-        icon={<CalendarOutlineIcon />}
+        disabled={!selectedSessionType}
       />
-      <InputField
-        id="time"
+      <DatePicker
         name="time"
         label="Preferred Time"
-        placeholder="09:30 AM"
-        icon={<TimeOutlineIcon />}
+        mode="time"
+        disabled={!selectedSessionType}
       />
 
       <Button
