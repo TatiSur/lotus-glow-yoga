@@ -1,0 +1,60 @@
+.react-datepicker-wrapper {
+  @apply block;
+}
+
+.custom-popper {
+  .react-datepicker__triangle {
+    color: var(--color-background) !important;
+    stroke: var(--color-background) !important;
+    fill: var(--color-background) !important;
+  }
+
+  .custom-calendar {
+    @apply bg-background border border-taupe-dark shadow-xl text-light-text;
+
+    .react-datepicker {
+      &__time-list {
+        @apply bg-background;
+      }
+
+      &__header,
+      &__day--keyboard-selected {
+        @apply bg-taupe-dark;
+      }
+
+      &__current-month,
+      &__day-name,
+      &-time__header,
+      &__time-list-item,
+      &__time-list-item--selected,
+      &__day,
+      &__day--selected,
+      &__day--keyboard-selected {
+        @apply text-light-text;
+      }
+
+      &__time-list-item:hover {
+        background-color: var(--color-primary) !important;
+      }
+
+      &__time-list-item--selected,
+      &__day--selected {
+        background-color: var(--color-hover) !important;
+      }
+
+      &__day:not(&__day--disabled) {
+        @apply hover:bg-primary hover:rounded-full;
+      }
+
+      &__day--selected,
+      &__day--keyboard-selected {
+        @apply rounded-full font-bold;
+      }
+
+      &__day--disabled {
+        @apply text-gray-500;
+      }
+    }
+  }
+}
+
