@@ -12,13 +12,13 @@ export const navLinks = [
     link: `#${SECTION_IDS.YOGA_TYPES}`,
   },
   {
-    title: 'LOTUS INSTRUCTORS',
-    shortTitle: 'Instructors',
-    link: `#${SECTION_IDS.INSTRUCTORS}`,
-  },
-  {
     title: 'BOOK A SESSION',
     shortTitle: 'Join The Club',
     link: `#${SECTION_IDS.JOIN_THE_CLUB}`,
+  },
+  {
+    title: 'LOTUS INSTRUCTORS',
+    shortTitle: 'Instructors',
+    link: `#${SECTION_IDS.INSTRUCTORS}`,
   },
 ] as const;
