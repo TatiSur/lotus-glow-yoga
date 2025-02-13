@@ -16,7 +16,7 @@ const CloseButton: FC<CloseButtonProps> = ({
     <button
       onClick={onClose}
       className={clsx(
-        'absolute flex h-40 w-28 items-center justify-center rounded-b-full bg-background text-end md:h-32 md:w-24',
+        'xs:h-30 xs:w-22 absolute flex h-28 w-20 items-center justify-center rounded-b-full bg-background text-end md:h-32 md:w-24',
         className
       )}
       {...props}
