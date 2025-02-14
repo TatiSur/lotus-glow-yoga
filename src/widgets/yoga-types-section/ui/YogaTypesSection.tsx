@@ -4,6 +4,8 @@ import Image from 'next/image';
 import YogaTypeCardList from './yoga-type-card-list/YogaTypeCardList';
 import { SECTION_IDS } from '@/shared/config';
 import { getYogaTypes } from '@/entities/yoga-types';
+import womanMeditatingImg from '@/shared/assets/images/woman-meditating.webp';
+import womanStretchingImg from '@/shared/assets/images/woman-stretching.webp';
 
 const YogaTypesSection: FC = async () => {
   const { data: yogaTypes, error } = await getYogaTypes();
@@ -28,24 +30,22 @@ const YogaTypesSection: FC = async () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-x-5 md:gap-y-[30px] xl:grid-cols-4">
-            <div className="xl:col-span-2">
+            <div className="relative overflow-hidden xl:col-span-2">
               <Image
-                src="/images/woman-meditating.webp"
+                src={womanMeditatingImg}
                 alt="Woman meditating"
-                width={650}
-                height={325}
-                className="h-full w-auto rounded-[10px] object-cover"
+                className="absolute left-0 top-0 size-full rounded-[10px] object-cover object-center"
+                placeholder="blur"
               />
             </div>
 
             <YogaTypeCardList data={yogaTypes} />
-            <div className="xl:col-span-2">
+            <div className="relative overflow-hidden xl:col-span-2">
               <Image
-                src="/images/woman-stretching.webp"
+                src={womanStretchingImg}
                 alt="Woman stretching"
-                width={647}
-                height={325}
-                className="h-full w-auto rounded-[10px] object-cover"
+                className="absolute left-0 top-0 size-full rounded-[10px] object-cover object-center"
+                placeholder="blur"
               />
             </div>
           </div>
