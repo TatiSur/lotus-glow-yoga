@@ -1,6 +1,7 @@
 export interface YogaType {
+  id: string;
   title: string;
   description: string;
   label: string;
-  sessionType: string;
+  sessionTypeIds: string[];
 }
