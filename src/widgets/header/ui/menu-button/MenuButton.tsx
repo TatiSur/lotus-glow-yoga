@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import MenuIcon from '@/shared/assets/icons/menu.svg';
 import { SideMenu } from '../side-menu';
 import clsx from 'clsx';
@@ -11,18 +11,6 @@ interface MenuButtonProps {
 
 const MenuButton: FC<MenuButtonProps> = ({ className }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (isOpen) setIsOpen(false);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isOpen]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -36,12 +24,12 @@ const MenuButton: FC<MenuButtonProps> = ({ className }) => {
         <button
           onClick={toggleMenu}
           className={clsx(
-            'flex size-full max-w-28 items-center justify-center rounded-b-full bg-primary shadow',
+            'xs:w-22 flex h-full max-h-[130px] w-20 items-center justify-center rounded-b-full bg-primary shadow-xl md:w-24',
             className
           )}
-          aria-label={isOpen ? 'Close menu' : 'Open menu'} // Accessible name
+          aria-label="Open menu"
         >
-          <MenuIcon className="w-[60px]" aria-hidden="true" />
+          <MenuIcon className="w-10 xs:w-12 md:w-[60px]" aria-hidden="true" />
         </button>
       )}
     </>
