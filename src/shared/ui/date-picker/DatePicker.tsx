@@ -61,7 +61,6 @@ const DatePicker: FC<DatePickerProps> = ({
   const hiddenInputRef = useRef<HTMLInputElement>(null);
 
   const [date, setDate] = useState<Date | null>(selected || null);
-  const [error, setError] = useState<string>(errorMessage);
 
   const handleChange = useCallback(
     (
@@ -69,7 +68,6 @@ const DatePicker: FC<DatePickerProps> = ({
       event?: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>
     ) => {
       setDate(date);
-      setError('');
       onChange?.(date, event);
       if (hiddenInputRef.current) {
         hiddenInputRef.current.value = date ? date.toISOString() : '';
@@ -100,7 +98,7 @@ const DatePicker: FC<DatePickerProps> = ({
         popperClassName="custom-popper"
         className={clsx(
           'base-field-styles pr-20',
-          error && 'base-field-error-styles',
+          errorMessage && 'base-field-error-styles',
           className
         )}
         {...props}
@@ -109,7 +107,7 @@ const DatePicker: FC<DatePickerProps> = ({
         icon={isTimePicker ? <TimeOutlineIcon /> : <CalendarOutlineIcon />}
         disabled={disabled}
       />
-      {error && <FieldError>{error}</FieldError>}
+      {!disabled && errorMessage && <FieldError>{errorMessage}</FieldError>}
     </div>
   );
 };
