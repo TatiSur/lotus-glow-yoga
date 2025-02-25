@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const bookSessionSchema = z.object({
-  name: z.string().min(2, 'Full Name is required'),
+  fullName: z.string().min(2, 'Full Name is required'),
   email: z.string().email('Invalid email address'),
   phone: z.string().optional(),
   sessionTypeId: z.string().min(1, 'Session type is required'),
