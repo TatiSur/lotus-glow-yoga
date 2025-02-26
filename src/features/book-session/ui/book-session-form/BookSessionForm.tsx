@@ -7,17 +7,15 @@ import { useRouter } from 'next/navigation';
 import { InputField } from '@/shared/ui/input-field';
 import { Button } from '@/shared/ui/button';
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
-import { DatePicker } from '@/shared/ui/date-picker';
 import { SessionTypeSelect } from '@/entities/session-types';
 import type { SessionType } from '@/entities/session-types/model/types';
 import type { SelectOption } from '@/shared/ui/custom-select/CustomSelect';
 import SpinnerIcon from '@/shared/assets/icons/spinner.svg';
 import { useToast } from '@/features/toast';
-
-import { BookSessionDatePicker } from '../book-session-date-picker';
 import type { BookSessionFormState } from '../../model/types';
 import { initialBookSessionFormState } from '../../model/initialBookSessionFormState';
 import { bookSessionAction } from '../../action/bookSessionAction';
+import DateTimePicker from '../date-time-picker/DateTimePicker';
 
 interface BookSessionFormProps extends HTMLAttributes<HTMLFormElement> {
   sessionTypes?: SessionType[];
@@ -119,22 +117,13 @@ const BookSessionForm: FC<BookSessionFormProps> = ({
         }
       />
 
-      <BookSessionDatePicker
-        name="date"
-        label="Preferred Date"
-        errorMessage={errors.date}
-        disabled={!selectedSessionType}
-        onChange={() => setErrors((prev) => ({ ...prev, date: '' }))}
+      <DateTimePicker
+        dateErrorMessage={errors.date}
+        timeErrorMessage={errors.time}
+        disabledAll={!selectedSessionType}
+        onChangeDate={() => setErrors((prev) => ({ ...prev, date: '' }))}
+        onChangeTime={() => setErrors((prev) => ({ ...prev, time: '' }))}
       />
-      <DatePicker
-        name="time"
-        label="Preferred Time"
-        mode="time"
-        errorMessage={errors.time}
-        disabled={!selectedSessionType}
-        onChange={() => setErrors((prev) => ({ ...prev, time: '' }))}
-      />
-
       <Button
         type="submit"
         disabled={isPending}

@@ -5,6 +5,7 @@ interface BookSessionDatePickerProps {
   name: string;
   label: string;
   errorMessage: string;
+  selected: Date | null;
   disabled?: boolean;
   onChange?: (date: Date | null) => void;
 }

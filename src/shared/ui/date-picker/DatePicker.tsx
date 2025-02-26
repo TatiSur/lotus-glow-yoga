@@ -60,7 +60,7 @@ const DatePicker: FC<DatePickerProps> = ({
 
   const hiddenInputRef = useRef<HTMLInputElement>(null);
 
-  const [date, setDate] = useState<Date | null>(selected || null);
+  const [date, setDate] = useState<Date | null>(null);
 
   const handleChange = useCallback(
     (
@@ -84,7 +84,7 @@ const DatePicker: FC<DatePickerProps> = ({
         fixedHeight
         id={datePickerId}
         name={name}
-        selected={date}
+        selected={typeof selected === 'undefined' ? date : selected}
         onChange={handleChange}
         dateFormat={dateFormat}
         calendarStartDay={0}
