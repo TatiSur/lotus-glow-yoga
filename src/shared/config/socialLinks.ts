@@ -10,13 +10,14 @@ import PinterestIcon from '@/shared/assets/icons/social/pinterest.svg';
 interface SocialLink {
   Icon: FC<SVGProps<SVGElement>>;
   link: string;
+  label: string;
 }
 
 export const SOCIAL_LINKS: readonly SocialLink[] = [
-  { Icon: FacebookIcon, link: 'https://facebook.com' },
-  { Icon: XTwitterIcon, link: 'https://twitter.com' },
-  { Icon: LinkedinIcon, link: 'https://linkedin.com' },
-  { Icon: YoutubeIcon, link: 'https://youtube.com' },
-  { Icon: InstagramIcon, link: 'https://instagram.com' },
-  { Icon: PinterestIcon, link: 'https://pinterest.com' },
+  { Icon: FacebookIcon, link: 'https://facebook.com', label: 'Facebook' },
+  { Icon: XTwitterIcon, link: 'https://twitter.com', label: 'X ex Twitter' },
+  { Icon: LinkedinIcon, link: 'https://linkedin.com', label: 'Linkedin' },
+  { Icon: YoutubeIcon, link: 'https://youtube.com', label: ' Youtube' },
+  { Icon: InstagramIcon, link: 'https://instagram.com', label: 'Instagram' },
+  { Icon: PinterestIcon, link: 'https://pinterest.com', label: 'Pinterest' },
 ] as const;

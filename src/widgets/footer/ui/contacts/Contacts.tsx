@@ -5,11 +5,11 @@ import { Title } from '@/shared/ui/title';
 const Contacts: FC = () => {
   return (
     <div>
-      <Title type="h6" className="mb-[26px]">
+      <Title size="h6" type="h2" className="mb-[26px]">
         PAY US A VISIT
       </Title>
       <div className="flex flex-col gap-[22px]">
-        {CONTACT_INFO.map(({ Icon, text, href }, index) => {
+        {CONTACT_INFO.map(({ Icon, text, href, label }, index) => {
           return (
             <div key={index} className="flex items-center gap-[13px]">
               <a
@@ -17,10 +17,13 @@ const Contacts: FC = () => {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={label}
               >
-                <Icon />
+                <Icon aria-hidden="true" />
               </a>
-              <p className="whitespace-pre-line text-sm text-light-text">{text}</p>
+              <p className="whitespace-pre-line text-sm text-light-text">
+                {text}
+              </p>
             </div>
           );
         })}

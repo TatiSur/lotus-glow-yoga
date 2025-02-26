@@ -1,31 +1,35 @@
 'use client';
 
-import { FC, useState } from 'react';
-import { YogaTypeCard, yogaTypes } from '@/entities/yoga-types';
-import { BookSessionModal } from '@/features/book-session';
+import { FC } from 'react';
+import { YogaType, YogaTypeCard } from '@/entities/yoga-types';
+import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
 
-const YogaTypeCardList: FC = () => {
-  const [showModal, setShowModal] = useState(false);
+interface YogaTypeCardListProps {
+  data: [] | YogaType[];
+}
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
+const YogaTypeCardList: FC<YogaTypeCardListProps> = ({ data }) => {
+  const router = useRouter();
+
+  const handleCardClick = (sessionTypeIds: string[]) => {
+    sessionStorage.setItem('sessionTypeIds', JSON.stringify(sessionTypeIds));
+
+    router.push('/?modal=book-session', {
+      scroll: false,
+    });
   };
 
-  return (
-    <>
-      {yogaTypes.map(({ title, description, label }, index) => (
-        <YogaTypeCard
-          key={title}
-          title={title}
-          description={description}
-          label={label}
-          onClick={toggleModal}
-          className={`row-span-1 ${index ? '' : 'order-first'}`}
-        />
-      ))}
-      {showModal && <BookSessionModal onClose={toggleModal} />}
-    </>
-  );
+  return data.map(({ title, description, label, sessionTypeIds }, index) => (
+    <YogaTypeCard
+      key={title}
+      title={title}
+      description={description}
+      label={label}
+      onClick={() => handleCardClick(sessionTypeIds)}
+      className={clsx('row-span-1', { 'order-first': !index })}
+    />
+  ));
 };
 
 export default YogaTypeCardList;

@@ -12,7 +12,13 @@ interface YogaTypeCardProps {
   className?: string;
 }
 
-const YogaTypeCard: FC<YogaTypeCardProps> = ({ title, description, label, onClick, className }) => {
+const YogaTypeCard: FC<YogaTypeCardProps> = ({
+  title,
+  description,
+  label,
+  onClick,
+  className,
+}) => {
   return (
     <div
       className={clsx(
@@ -22,10 +28,16 @@ const YogaTypeCard: FC<YogaTypeCardProps> = ({ title, description, label, onClic
       )}
     >
       <div>
-        <Title type="h5" className="mb-8 pr-10 !text-left text-primary">
+        <Title
+          type="h3"
+          size="h5"
+          className="mb-8 pr-10 !text-left text-primary"
+        >
           {title}
         </Title>
-        <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-taupe-dark md:mb-3">{label}</p>
+        <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-taupe-dark md:mb-3">
+          {label}
+        </p>
         <p className="text-sm text-light-text">{description}</p>
       </div>
       <Button

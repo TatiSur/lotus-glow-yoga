@@ -7,17 +7,21 @@ interface CloseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClose: () => void;
 }
 
-const CloseButton: FC<CloseButtonProps> = ({ onClose, className, ...props }) => {
+const CloseButton: FC<CloseButtonProps> = ({
+  onClose,
+  className,
+  ...props
+}) => {
   return (
     <button
       onClick={onClose}
       className={clsx(
-        'absolute flex h-40 w-28 items-center justify-center rounded-b-full bg-background text-end md:h-32 md:w-24',
+        'xs:h-30 xs:w-22 absolute flex h-28 w-20 items-center justify-center rounded-b-full bg-background text-end md:h-32 md:w-24',
         className
       )}
       {...props}
     >
-      <CloseIcon className="size-9 md:size-7" />
+      <CloseIcon className="size-9 text-primary md:size-7" />
     </button>
   );
 };

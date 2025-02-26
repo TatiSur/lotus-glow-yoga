@@ -6,8 +6,11 @@ type FooterSocialProps = HTMLAttributes<HTMLDivElement>;
 
 const Social: FC<FooterSocialProps> = ({ className, ...props }) => {
   return (
-    <div className={clsx('flex flex-wrap items-center gap-[18px]', className)} {...props}>
-      {SOCIAL_LINKS.map(({ Icon, link }) => {
+    <div
+      className={clsx('flex flex-wrap items-center gap-[18px]', className)}
+      {...props}
+    >
+      {SOCIAL_LINKS.map(({ Icon, link, label }) => {
         return (
           <a
             key={link}
@@ -15,8 +18,9 @@ const Social: FC<FooterSocialProps> = ({ className, ...props }) => {
             target="_blank"
             rel="noopener noreferrer"
             className="transition-opacity hover:opacity-80"
+            aria-label={label}
           >
-            <Icon />
+            <Icon aria-hidden="true" />
           </a>
         );
       })}
