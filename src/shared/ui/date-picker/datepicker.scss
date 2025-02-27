@@ -33,7 +33,7 @@
         @apply text-light-text;
       }
 
-      &__time-list-item:hover {
+      &__time-list-item:not(&__time-list-item--disabled):hover {
         background-color: var(--color-primary) !important;
       }
 
@@ -51,8 +51,12 @@
         @apply rounded-full font-bold;
       }
 
-      &__day--disabled {
-        @apply text-gray-500;
+      &__day--disabled, &__time-list-item--disabled {
+        @apply text-gray-500 !important;
+      }
+
+      &__day--excluded {
+        @apply bg-gray-800 rounded-full;
       }
     }
   }
