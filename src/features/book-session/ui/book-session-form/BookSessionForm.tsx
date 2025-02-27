@@ -1,21 +1,18 @@
 'use client';
 
 import { FC, HTMLAttributes, useActionState, useEffect, useState } from 'react';
-import type { SingleValue } from 'react-select';
 import { useRouter } from 'next/navigation';
 
 import { InputField } from '@/shared/ui/input-field';
 import { Button } from '@/shared/ui/button';
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
-import { SessionTypeSelect } from '@/entities/session-types';
 import type { SessionType } from '@/entities/session-types/model/types';
-import type { SelectOption } from '@/shared/ui/custom-select/CustomSelect';
 import SpinnerIcon from '@/shared/assets/icons/spinner.svg';
 import { useToast } from '@/features/toast';
 import type { BookSessionFormState } from '../../model/types';
 import { initialBookSessionFormState } from '../../model/initialBookSessionFormState';
 import { bookSessionAction } from '../../action/bookSessionAction';
-import DateTimePicker from '../date-time-picker/DateTimePicker';
+import SessionScheduler from '@/features/book-session/ui/session-scheduler/SessionScheduler';
 
 interface BookSessionFormProps extends HTMLAttributes<HTMLFormElement> {
   sessionTypes?: SessionType[];
@@ -28,29 +25,12 @@ const BookSessionForm: FC<BookSessionFormProps> = ({
   const router = useRouter();
   const { addToast } = useToast();
 
-  const [selectedSessionType, setSelectedSessionType] =
-    useState<SessionType | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const [state, formAction, isPending] = useActionState<
     BookSessionFormState,
     FormData
   >(bookSessionAction, initialBookSessionFormState);
-
-  useEffect(() => {
-    const sessionTypeIds = sessionStorage.getItem('sessionTypeIds');
-    if (sessionTypeIds) {
-      sessionStorage.removeItem('sessionTypeIds');
-
-      const sessionTypeIdsArr = JSON.parse(sessionTypeIds);
-
-      const selectedSessionType = sessionTypes?.find(({ id }) =>
-        sessionTypeIdsArr.includes(id)
-      );
-
-      if (selectedSessionType) setSelectedSessionType(selectedSessionType);
-    }
-  }, []);
 
   useEffect(() => {
     if (state.fieldErrors) setErrors(state.fieldErrors);
@@ -62,14 +42,13 @@ const BookSessionForm: FC<BookSessionFormProps> = ({
       });
 
       if (!state.hasError) {
-        setSelectedSessionType(null);
         setTimeout(() => router.push('/'), 1000);
       }
     }
   }, [state]);
 
-  const handleSelectSessionType = (newValue: SingleValue<SelectOption>) => {
-    setSelectedSessionType(newValue as SessionType);
+  const removeErrorMessage = (fieldName: string) => {
+    setErrors((prev) => ({ ...prev, [fieldName]: '' }));
   };
 
   return (
@@ -87,7 +66,7 @@ const BookSessionForm: FC<BookSessionFormProps> = ({
         required
         defaultValue={state.values.fullName}
         errorMessage={errors.fullName}
-        onInput={() => setErrors((prev) => ({ ...prev, fullName: '' }))}
+        onInput={() => removeErrorMessage('fullName')}
       />
       <InputField
         id="email"
@@ -97,7 +76,7 @@ const BookSessionForm: FC<BookSessionFormProps> = ({
         required
         defaultValue={state.values.email}
         errorMessage={errors.email}
-        onInput={() => setErrors((prev) => ({ ...prev, email: '' }))}
+        onInput={() => removeErrorMessage('email')}
       />
       <InputField
         id="phone"
@@ -106,23 +85,12 @@ const BookSessionForm: FC<BookSessionFormProps> = ({
         placeholder="Eg. 180 1200 1000"
         defaultValue={state.values.phone}
       />
-
-      <SessionTypeSelect
+      <SessionScheduler
         sessionTypes={sessionTypes}
-        sessionType={selectedSessionType}
-        onSelect={handleSelectSessionType}
-        errorMessage={errors.sessionTypeId}
-        onInputChange={() =>
-          setErrors((prev) => ({ ...prev, sessionTypeId: '' }))
-        }
-      />
-
-      <DateTimePicker
         dateErrorMessage={errors.date}
         timeErrorMessage={errors.time}
-        disabledAll={!selectedSessionType}
-        onChangeDate={() => setErrors((prev) => ({ ...prev, date: '' }))}
-        onChangeTime={() => setErrors((prev) => ({ ...prev, time: '' }))}
+        sessionTypeErrorMessage={errors.sessionTypeId}
+        removeErrorMessage={removeErrorMessage}
       />
       <Button
         type="submit"
