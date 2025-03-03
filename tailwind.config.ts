@@ -7,8 +7,10 @@ export default {
       colors: {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
+        'secondary-2': 'var(--color-secondary-2)',
         'taupe-dark': 'var(--color-taupe-dark)',
         hover: 'var(--color-hover)',
+        'dark-hover': 'var(--color-dark-hover)',
         background: 'var(--color-background)',
         'light-text': 'var(--color-light-text)',
         'dark-text': 'var(--color-dark-text)',
@@ -46,6 +48,12 @@ export default {
           '0%': { opacity: '1', transform: 'translateY(0)' },
           '100%': { opacity: '0', transform: 'translateY(-10px)' },
         },
+      },
+      boxShadow: {
+        'primary-inset':
+          '0 0 40px 40px var(--color-primary) inset, 0 0 0 0 var(--color-primary)',
+        'primary-outset':
+          '0 0 10px 0 var(--color-primary) inset, 0 0 10px 4px var(--color-primary)',
       },
     },
   },

@@ -24,7 +24,7 @@ const MenuButton: FC<MenuButtonProps> = ({ className }) => {
         <button
           onClick={toggleMenu}
           className={clsx(
-            'xs:w-22 flex h-full max-h-[130px] w-20 items-center justify-center rounded-b-full bg-primary shadow-xl md:w-24',
+            'btn-vertical-animated-bg xs:w-22 flex h-full max-h-[130px] w-20 items-center justify-center rounded-b-full bg-primary shadow-xl md:w-24',
             className
           )}
           aria-label="Open menu"

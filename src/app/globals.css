@@ -8,8 +8,10 @@
     /* Colors */
     --color-primary: #C7A78A;
     --color-secondary: #927C69;
-    --color-hover: #9A816B;
+    --color-secondary-2: #85715f;
+    --color-hover: #d8b393;
     --color-background: #191614;
+    --color-dark-hover: #25201d;
     --color-light-text: #FFFFFF;
     --color-dark-text: #191614;
     --color-ui-blocks: #100F0E;
@@ -97,5 +99,31 @@ body {
 
     .base-field-error-styles {
         @apply border-red-500;
+    }
+}
+
+@layer components {
+    .btn-vertical-animated-bg {
+        @apply relative overflow-hidden;
+    }
+
+    .btn-vertical-animated-bg::after {
+        content: "";
+        @apply rounded-b-full absolute bottom-0 left-0 w-full h-full bg-primary z-[-2];
+    }
+
+    .btn-vertical-animated-bg::before {
+        content: "";
+        @apply rounded-b-full absolute top-0 left-0 w-full h-0 bg-hover z-[-1] transition-all duration-300;
+    }
+
+    .btn-vertical-animated-bg:hover::before {
+        @apply h-full;
+    }
+}
+
+@layer components {
+    .loader {
+        @apply w-8 h-8 border-4 border-white border-b-transparent rounded-full inline-block box-border animate-spin;
     }
 }

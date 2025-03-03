@@ -4,8 +4,10 @@ import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import clsx from 'clsx';
 
 const variantStyles = {
-  primary: 'bg-primary text-dark-text hover:enabled:bg-hover',
-  secondary: 'bg-secondary text-light-text hover:enabled:bg-hover',
+  primary:
+    'border-primary border-2 shadow-primary-inset text-dark-text hover:enabled:text-primary hover:enabled:shadow-primary-outset',
+  secondary:
+    'bg-secondary text-light-text hover:enabled:bg-secondary-2 shadow-secondary hover:enabled:shadow-md',
   text: 'bg-transparent !px-0 py-1 hover:enabled:opacity-80',
 };
 
