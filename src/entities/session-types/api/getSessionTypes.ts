@@ -17,7 +17,13 @@ export const getSessionTypes = async (): Promise<GetSessionTypesResponse> => {
     }
 
     const data: SessionType[] = await response.json();
-    return { data, error: null };
+
+    const formattedData = data.map((sessionType) => ({
+      ...sessionType,
+      label: `${sessionType.label} | ${sessionType.instructorName} (${sessionType.sessionDuration}min) `,
+    }));
+
+    return { data: formattedData, error: null };
   } catch (error) {
     return { data: [], error: (error as Error).message };
   }
