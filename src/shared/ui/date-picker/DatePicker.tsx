@@ -33,6 +33,7 @@ type DatePickerProps = Omit<
   name: string;
   mode?: 'date' | 'time';
   label?: string;
+  loading?: boolean;
   errorMessage?: string;
   selected?: Date | null;
   onChange?: (
@@ -45,6 +46,7 @@ const DatePicker: FC<DatePickerProps> = ({
   id,
   name,
   label,
+  loading,
   mode = 'date',
   errorMessage = '',
   className,
@@ -79,6 +81,9 @@ const DatePicker: FC<DatePickerProps> = ({
   return (
     <div className="relative w-full">
       {label && <FieldLabel htmlFor={datePickerId}>{label}</FieldLabel>}
+      {loading && (
+        <span className="loader absolute inset-0 z-50 mx-auto mt-4" />
+      )}
       <input type="hidden" name={name} ref={hiddenInputRef} />
       <ReactDatePicker
         fixedHeight
