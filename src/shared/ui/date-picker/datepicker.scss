@@ -33,8 +33,18 @@
         @apply text-light-text;
       }
 
+      &__day,
+      &__time-list-item {
+        @apply border-2 rounded-full border-transparent bg-transparent;
+      }
+
+      &__day {
+        @apply box-content;
+      }
+
       &__time-list-item:not(&__time-list-item--disabled):hover {
-        background-color: var(--color-primary) !important;
+        @apply border-2 bg-transparent;
+        border-color: var(--color-hover) !important;
       }
 
       &__time-list-item--selected,
@@ -42,8 +52,8 @@
         background-color: var(--color-hover) !important;
       }
 
-      &__day:not(&__day--disabled) {
-        @apply hover:bg-primary hover:rounded-full;
+      &__day:not(&__day--disabled):hover, &__day--keyboard-selected {
+        @apply border-hover;
       }
 
       &__day--selected,
@@ -51,12 +61,28 @@
         @apply rounded-full font-bold;
       }
 
-      &__day--disabled, &__time-list-item--disabled {
+      &__day--disabled:not(.fully-booked-day), &__time-list-item--disabled {
         @apply text-gray-500 !important;
       }
 
-      &__day--excluded {
-        @apply bg-gray-800 rounded-full;
+      &__day--today {
+        @apply text-teal-400;
+      }
+
+      &__day.fully-booked-day {
+        @apply text-red-400;
+      }
+
+      &__day.partially-booked-day {
+        @apply text-amber-300;
+      }
+
+      &__time-list {
+        @apply max-h-fit;
+      }
+
+      &__time-list-item.excluded-time {
+        @apply hidden;
       }
     }
   }
