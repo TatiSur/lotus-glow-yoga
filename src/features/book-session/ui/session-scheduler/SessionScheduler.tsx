@@ -89,17 +89,15 @@ const SessionScheduler: FC<SessionSchedulerProps> = ({
 
       <DateTimePicker
         reset={loading}
+        loading={loading}
         dateErrorMessage={dateErrorMessage}
         timeErrorMessage={timeErrorMessage}
         disabledAll={!selectedSessionType || loading}
         onChangeDate={() => removeErrorMessage('date')}
         onChangeTime={() => removeErrorMessage('time')}
         unavailableDays={sessionSchedule?.unavailableDays || []}
-        bookedSlots={sessionSchedule?.bookedSlots || {}}
-        sessionHours={
-          sessionSchedule?.sessionHours || { start: '00:00', end: '23:59' }
-        }
-        sessionDuration={sessionSchedule?.sessionDuration || 60}
+        bookedDates={sessionSchedule?.bookedDates || {}}
+        sessionTimes={sessionSchedule?.sessionTimes || {}}
       />
     </>
   );
