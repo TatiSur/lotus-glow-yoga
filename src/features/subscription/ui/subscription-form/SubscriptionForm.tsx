@@ -4,7 +4,6 @@ import { FC, useActionState, useEffect, useState } from 'react';
 
 import { InputField } from '@/shared/ui/input-field';
 import { Button } from '@/shared/ui/button';
-import SpinnerIcon from '@/shared/assets/icons/spinner.svg';
 import { useToast } from '@/features/toast';
 
 import { SubscriptionFormState } from '../../model/types';
@@ -61,7 +60,7 @@ const SubscriptionForm: FC = () => {
         {isPending ? (
           <>
             Submitting...
-            <SpinnerIcon className="size-4 animate-spin" />
+            <span className="loader shrink-0" />
           </>
         ) : (
           'Subscribe'

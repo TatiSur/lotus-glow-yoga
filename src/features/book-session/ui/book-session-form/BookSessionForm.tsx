@@ -7,7 +7,6 @@ import { InputField } from '@/shared/ui/input-field';
 import { Button } from '@/shared/ui/button';
 import ArrowIcon from '@/shared/assets/icons/arrow.svg';
 import type { SessionType } from '@/entities/session-types/model/types';
-import SpinnerIcon from '@/shared/assets/icons/spinner.svg';
 import { useToast } from '@/features/toast';
 import type { BookSessionFormState } from '../../model/types';
 import { initialBookSessionFormState } from '../../model/initialBookSessionFormState';
@@ -95,12 +94,13 @@ const BookSessionForm: FC<BookSessionFormProps> = ({
       <Button
         type="submit"
         disabled={isPending}
-        className="mt-6 bg-secondary text-light-text hover:bg-hover md:w-[293px]"
+        variant="secondary"
+        className="mt-6 md:w-[293px]"
       >
         {isPending ? (
           <>
             Submitting...
-            <SpinnerIcon className="size-4 animate-spin" />
+            <span className="loader shrink-0" />
           </>
         ) : (
           <>
