@@ -58,7 +58,7 @@ const Modal: FC<ModalProps> = ({ children, onClose, className }) => {
           />
           <CloseButton
             onClose={handleClosing}
-            className="absolute right-[35px] z-[101] md:right-[100px]"
+            className="right-[35px] z-[101] md:right-[100px]"
           />
           <div className="relative text-center md:pl-20 md:text-start">
             <div className="pb-3 pt-[150px] text-sm tracking-[0.6em] text-primary md:pb-4 md:pt-[124px] md:text-base">
