@@ -19,7 +19,7 @@ const InstructorsSection: FC = async () => {
             <br />
             <span className="text-primary">INSTRUCTORS</span>
           </Title>
-          <hr className="hidden h-px w-full max-w-[719px] border-primary md:block" />
+          <hr className="hidden h-px w-full max-w-[719px] rounded-full border border-primary md:block" />
         </div>
 
         <InstructorCardList

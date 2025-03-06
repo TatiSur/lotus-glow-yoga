@@ -36,7 +36,7 @@ const Footer: FC = () => {
           <BookSessionButton className="mx-auto max-w-[265px] lg:ml-auto lg:basis-1/3 xl:ml-0" />
         </div>
       </div>
-      <hr className="mb-8 h-px w-full border-primary" />
+      <hr className="mb-8 h-px w-full rounded-full border border-primary" />
       <div className="pb-14 text-center text-[10px] font-bold uppercase tracking-[0.33em] text-primary md:pb-12 md:text-xs lg:text-sm">
         LOTUS GLOW YOGA CLUB © ALL RIGHTS RESERVED {new Date().getFullYear()}
       </div>

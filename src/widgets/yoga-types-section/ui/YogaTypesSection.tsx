@@ -21,7 +21,7 @@ const YogaTypesSection: FC = async () => {
             DISCOVER <br /> THE LOTUS{' '}
             <span className="text-primary">TYPES</span>
           </Title>
-          <hr className="hidden h-px w-full max-w-[719px] border-primary md:block" />
+          <hr className="hidden h-px w-full max-w-[719px] rounded-full border border-primary md:block" />
         </div>
 
         {error ? (
