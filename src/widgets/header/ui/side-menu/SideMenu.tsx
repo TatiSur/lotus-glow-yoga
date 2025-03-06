@@ -54,13 +54,13 @@ const SideMenu: FC<SideMenuProps> = ({ onClose }) => {
           {navLinks.map(({ title, link }) => (
             <li
               key={title}
-              className="border-b border-background pb-3 last:border-0 md:w-[533px] md:pb-5"
+              className="border-b-2 border-background pb-3 last:border-0 md:w-[533px] md:pb-5"
             >
               <a
                 href={link}
                 onClick={handleClose}
                 className={clsx(
-                  'font-lato text-xl font-bold uppercase tracking-[0.06em] text-dark-text md:text-3xl',
+                  'font-lato text-xl font-bold uppercase tracking-[0.06em] text-dark-text transition-all hover:opacity-80 md:text-3xl',
                   link.replace('#', '') === activeSection && 'text-light-text'
                 )}
               >
